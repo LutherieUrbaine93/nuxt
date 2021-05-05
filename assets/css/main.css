@@ -1,6 +1,12 @@
+@import "tailwindcss/base";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
-  --bgColor1: rgb(25,25,25);
-  --bgColor2: rgb(33,33,33);
+  --bgColor1: rgb(17, 24, 39); /* tailwind color-gray-900 */
+  --bgColor2: rgb(31, 41, 55); /* tailwind color-gray-800 */
+  --bgColor3: rgb(55, 65, 81); /* tailwind color-gray-700 */
   --white: rgb(255,255,255);
   --whitesmoke: rgb(245,245,245);
   --grey: rgb(186,186,186);
@@ -16,6 +22,8 @@
   --anim1: cubic-bezier(.5,0,0,1);
 }
 html {
+  font-family: var(--lu93Sans1);
+  font-weight: 400; /* 300 400 600 700 800 */
   background-color: var(--bgColor1);
   color: var(--whitesmoke);
 }
@@ -24,7 +32,41 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--lu93Serif);
   font-weight: 800;
 }
-h1 {
-  font-size: 1.8em;
-  margin: 0.67em 0;
+
+@layer base {/*
+  h1 {
+    @apply text-3xl font-black;
+  }*/
+  h1 {
+    @apply sm:text-2xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl;
+  }
+  h2 {
+    @apply sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl;
+  }
+  h3 {
+    @apply sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl;
+  }
+  h4 {
+    @apply sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl;
+
+    /*@apply sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold;
+  }
+  h5 {
+    @apply sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-bold;*/
+  }
 }
+/* Sample `apply` at-rules with Tailwind CSS*/
+.container {
+    /*@apply flex flex-row justify-center flex-column items-center text-center mx-auto;*/
+    @apply px-4 sm:px-0 mx-auto;
+}
+.wrapper-row {
+  @apply flex flex-row justify-center flex-wrap
+}
+
+
+@media only screen and (min-width: 640px) {}
+@media only screen and (min-width: 768px) {}
+@media only screen and (min-width: 1024px) {}
+@media only screen and (min-width: 1280px) {}
+@media only screen and (min-width: 1536px) {}

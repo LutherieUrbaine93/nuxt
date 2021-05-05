@@ -10,22 +10,30 @@ const apiClient = axios.create({
 })
 
 export default {
-  getCategories() { // For main-menu
-    return apiClient.get('categories')
+  getMenu(e) { // For main-menu
+    return apiClient.get(e)
   },
-  getByRoute(route) { // For pages & sub-pages
-    if (route.indexOf("-")) {
-      let cleanRoute = route.substring(route.indexOf("-") + 1) // To remove 'parent-' page in sub-pages route
-      if (cleanRoute.indexOf("_")) {
-        cleanRoute = cleanRoute.replace("_", "-")
-      }
-      return apiClient.get(cleanRoute)
-    } else {
-      return apiClient.get(route)
-    }
-  }/*,
-  getEvent(id) {
-    return apiClient.get('events/' + id)
-  }*/
-}
+  getMenus() { // For main-menu
+    return apiClient.get('menus')
+  },
+  getByRoute(path) { // For pages & sub-pages
+    const lastSlash = path.lastIndexOf('/')
+    const pageName = path.substring(lastSlash + 1)
 
+    return apiClient.get(pageName)
+  },
+  getAllCategories() { // For main-menu
+    // return apiClient.get('categories')
+    return apiClient
+  }
+}
+/*
+activites
+creations-tous-terrains
+ecouter-voir
+instrumentarium
+pedagogie-de-la-creation
+presentation
+presse
+
+*/

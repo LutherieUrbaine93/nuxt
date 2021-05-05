@@ -1,106 +1,287 @@
 <template>
-  <div id="menu-nav">
+  <div id="overlay">
 
-    <!--    <div class="menu-link" style="background-color: #212121">
-        </div>-->
+    <div id="nav-trigger" class="nav-trigger" :class="{burger: isClosed}" @click="menu">
+      <span class="line"></span>
+      <span class="line"></span>
+      <span class="line"></span>
+    </div>
 
-    <nuxt-link class="menu-cat"
-      v-for="category in categories"
-      :key="category.id"
-      :to="category.Lien_page"
-      :style="{ backgroundColor: category.Couleur }">
-      <h1 class="page-title my-0" v-if="category.Texte_foncer" style="color:#212121">{{ category.Nom }}</h1>
-      <h1 class="page-title my-0" v-else>{{ category.Nom }}</h1>
-    </nuxt-link>
+    <nav :class="{in: onScreen}">
+      <nuxt-link class="nav-label group"
+                 v-for="category in categories"
+                 :to="category.Lien_page"
+                 :key="category.id"
+                 :style="{ backgroundColor: category.Couleur }">
+        <h1 v-if="category.Lien_page === pageRoute && category.Texte_foncer" class="text-gray-800 line-through">{{ category.Nom }}</h1>
+
+        <h1 v-else-if="category.Texte_foncer" class="text-gray-800 group-hover:underline">{{ category.Nom }}</h1>
+
+        <h1 v-else-if="category.Lien_page === pageRoute" class="line-through">{{ category.Nom }}</h1>
+
+        <h1 v-else class="group-hover:underline">{{ category.Nom }}</h1>
+      </nuxt-link>
+    </nav>
+
+    <div :class="{in: onScreen}">
+      <nuxt-link class="nav-label-home flex justify-center items-center group" to="/">
+        <div class="back-line absolute w-28 h-1 bg-gray-100 bg-opacity-0 group-hover:bg-white group-hover:bg-opacity-100"></div>
+        <div class="absolute bg-gray-900 px-2">
+          <HomeIcon class="fill-current h-12"/>
+        </div>
+      </nuxt-link>
+    </div>
 
   </div>
 </template>
 
 <script>
 // import FetchData from '~/services/FetchData.js'
+import HomeIcon from "~/assets/svg/home.svg?inline"
 
 export default {
+  // name: 'MenuNav',
+  props: {
+    pageRoute: '',
+  },
+  components: {HomeIcon},
+  methods: {
+    menu: function () {
+      this.isClosed = !this.isClosed
+      this.onScreen = !this.onScreen
+    }
+  },
   data() {
     return {
+      isClosed: false,
+      onScreen: false,
       categories: []
     }
   },
   async fetch() {
-    this.categories = await fetch('https://lutherieurbaine93.herokuapp.com/categories')
+    this.categories = await fetch('https://lutherieurbaine93.herokuapp.com/menus')
       .then(resp => resp.json())
-    /*      .then(resp => {
-            return {
-              headerTtl: resp.find(cat => cat.Lien_page === this.$route.name)?.Entete,
-              headerClr: resp.find(cat => cat.Lien_page === this.$route.name)?.Couleur,
-              darkenTxt: resp.find(cat => cat.Lien_page === this.$route.name)?.Texte_foncer
-            }
-          })*/
   }
 }
 </script>
 
 <style scoped>
-#menu-nav {
+.nav-label-home {
+  position: fixed;
+  background-color: var(--bgColor1);
+  width: 66px; /* same as #nav-trigger */
+  height: 60px;
+  border-bottom: 1px solid white;
+  right: 0;
+  z-index: 100;
+  opacity: 0;
+  transition: width .5s ease-out .35s, opacity .5s ease-out .35s;
+}
+
+.in .nav-label-home {
+  width: 100%;
+  opacity: 1;
+  transition: width .5s ease-out, opacity .5s ease-out;
+}
+
+.nav-label-home svg {
+  opacity: 0;
+  visibility: hidden;
+  transition: all .45s ease-out;
+  transition-property: opacity, visibility;
+}
+
+.in .nav-label-home svg {
+  opacity: 1;
+  visibility: visible;
+  transition: all .5s ease-out .5s;
+  transition-property: opacity, visibility;
+}
+
+nav {
   position: fixed;
   width: 100%;
   height: 100%;
   display: flex;
-  /*display: none;*/
   flex-flow: column wrap;
   align-items: stretch;
-  z-index: 999;
+  pointer-events: none;
+  z-index: 100;
+  padding-top: 59px;
+  /*background: var(--bgColor2);*/
 }
 
-.menu-link {
+nav.in {
+  pointer-events: auto;
+}
+
+.nav-label {
   display: flex;
   flex: 1;
   align-items: center;
   justify-content: center;
+  z-index: 150;
 }
 
-.menu-cat {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-  opacity: .9;
-  transition: opacity .2s ease;
+/*.menu-link { order: 0; }*/
+.nav-label:nth-child(1) {
+  order: 1;
 }
-.menu-cat:hover {
+
+.nav-label:nth-child(2) {
+  order: 2;
+}
+
+.nav-label:nth-child(3) {
+  order: 4;
+}
+
+.nav-label:nth-child(4) {
+  order: 3;
+}
+
+.nav-label:nth-child(5) {
+  order: 5;
+}
+
+.nav-label:nth-child(6) {
+  order: 6;
+}
+
+.nav-label:nth-child(7) {
+  order: 8;
+}
+
+.nav-label:nth-child(8) {
+  order: 7;
+}
+
+/******** Nav-labels transitions OUT ********/
+nav .nav-label:nth-child(8n + 1) {
+  transition: transform 0.5s ease-out calc(0.05s * (8 - 1)), opacity 0.5s linear calc(0.05s * (8 - 1));
+}
+
+nav .nav-label:nth-child(8n + 2) {
+  transition: transform 0.5s ease-out calc(0.05s * (8 - 2)), opacity 0.5s linear calc(0.05s * (8 - 2));
+}
+
+nav .nav-label:nth-child(8n + 3) {
+  transition: transform 0.5s ease-out calc(0.05s * (8 - 4)), opacity 0.5s linear calc(0.05s * (8 - 4));
+}
+
+nav .nav-label:nth-child(8n + 4) {
+  transition: transform 0.5s ease-out calc(0.05s * (8 - 3)), opacity 0.5s linear calc(0.05s * (8 - 3));
+}
+
+nav .nav-label:nth-child(8n + 5) {
+  transition: transform 0.5s ease-out calc(0.05s * (8 - 5)), opacity 0.5s linear calc(0.05s * (8 - 5));
+}
+
+nav .nav-label:nth-child(8n + 6) {
+  transition: transform 0.5s ease-out calc(0.05s * (8 - 6)), opacity 0.5s linear calc(0.05s * (8 - 6));
+}
+
+nav .nav-label:nth-child(8n + 7) {
+  transition: transform 0.5s ease-out calc(0.05s * (8 - 8)), opacity 0.5s linear calc(0.05s * (8 - 8));
+}
+
+nav .nav-label:nth-child(8n + 8) {
+  transition: transform 0.5s ease-out calc(0.05s * (8 - 7)), opacity 0.5s linear calc(0.05s * (8 - 7));
+}
+
+nav .nav-label {
+  transform: translateY(300%);
+  opacity: 0;
+}
+
+/******** Nav-labels transitions IN ********/
+nav.in .nav-label:nth-child(8n + 1) {
+  transition: transform 0.5s ease-out calc(0.1s * 1), opacity 0.5s linear calc(0.1s * 1);
+}
+
+nav.in .nav-label:nth-child(8n + 2) {
+  transition: transform 0.5s ease-out calc(0.1s * 2), opacity 0.5s linear calc(0.1s * 2);
+}
+
+nav.in .nav-label:nth-child(8n + 3) {
+  transition: transform 0.5s ease-out calc(0.1s * 4), opacity 0.5s linear calc(0.1s * 4);
+}
+
+nav.in .nav-label:nth-child(8n + 4) {
+  transition: transform 0.5s ease-out calc(0.1s * 3), opacity 0.5s linear calc(0.1s * 3);
+}
+
+nav.in .nav-label:nth-child(8n + 5) {
+  transition: transform 0.5s ease-out calc(0.1s * 5), opacity 0.5s linear calc(0.1s * 5);
+}
+
+nav.in .nav-label:nth-child(8n + 6) {
+  transition: transform 0.5s ease-out calc(0.1s * 6), opacity 0.5s linear calc(0.1s * 6);
+}
+
+nav.in .nav-label:nth-child(8n + 7) {
+  transition: transform 0.5s ease-out calc(0.1s * 8), opacity 0.5s linear calc(0.1s * 8);
+}
+
+nav.in .nav-label:nth-child(8n + 8) {
+  transition: transform 0.5s ease-out calc(0.1s * 7), opacity 0.5s linear calc(0.1s * 7);
+}
+
+nav.in .nav-label {
+  transform: translateY(0);
   opacity: 1;
   transition: opacity .2s ease;
 }
 
-/*.menu-link { order: 0; }*/
-.menu-cat:nth-child(1) {
-  order: 1;
+/**** Nav Button ****/
+.nav-trigger {
+  background: var(--bgColor2);
+  position: fixed;
+  width: 110px;
+  height: 98px;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+  z-index: 200;
+  transform-origin: 110px 0;
+  transform: scale(0.6);
+  transition: background 0.3s linear;
 }
 
-.menu-cat:nth-child(2) {
-  order: 2;
+.line {
+  display: block;
+  position: absolute;
+  width: 80px;
+  height: 8px;
+  background: white;
+  left: 15px;
+  transform-origin: 0 4px;
+  transition: opacity 0.3s ease-in-out 0s, transform 0.24s ease-in-out 0s;
+  pointer-events: none
 }
 
-.menu-cat:nth-child(3) {
-  order: 4;
+.line:nth-child(3n + 1) {
+  top: 16px;
 }
 
-.menu-cat:nth-child(4) {
-  order: 3;
+.line:nth-child(3n + 2) {
+  top: calc(16px + 28px);
 }
 
-.menu-cat:nth-child(5) {
-  order: 5;
+.line:nth-child(3n + 3) {
+  top: calc(16px + (28px * 2));
 }
 
-.menu-cat:nth-child(6) {
-  order: 6;
+.burger .line:nth-child(1) {
+  transform: translateX(11px) rotate(45deg);
 }
 
-.menu-cat:nth-child(7) {
-  order: 8;
+.burger .line:nth-child(2) {
+  opacity: 0;
 }
 
-.menu-cat:nth-child(8) {
-  order: 7;
+.burger .line:nth-child(3) {
+  transform: translateX(11px) rotate(-45deg);
 }
+
 </style>

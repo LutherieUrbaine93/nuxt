@@ -1,20 +1,18 @@
 <template>
-  <div id="box-wrapper">
+    <div id="board">
 
-    <nuxt-link
-      v-for="category in categories"
-      class="box-link"
-      :key="category.id"
-      :to="category.Lien_page">
-      <!-- div class="box-audio" style="background-color:{{ category.Couleur }}" -->
-      <div :id="category.Lien_page" class="box rounded shadow-md" :style="{ backgroundColor: category.Couleur }">
-        <!--img src="" class="img-bg" alt=""-->
-        <h1 v-if="category.Texte_foncer" style="color:#212121">{{ category.Nom }}</h1>
-        <h1 v-else>{{ category.Nom }}</h1>
-      </div>
-    </nuxt-link>
+      <nuxt-link class="box-link"
+                 v-for="category in categories"
+                 :key="category.id"
+                 :to="category.Lien_page">
+        <div :id="category.Lien_page" class="box rounded shadow-md" :style="{ backgroundColor: category.Couleur }">
+          <!--img src="" class="img-bg" alt=""-->
+          <h4 v-if="category.Texte_foncer" style="color:#212121">{{ category.Nom }}</h4>
+          <h4 v-else>{{ category.Nom }}</h4>
+        </div>
+      </nuxt-link>
 
-  </div>
+    </div>
 </template>
 
 <script>
@@ -28,111 +26,149 @@ export default {
 </script>
 
 <style scoped>
-#box-wrapper {
+#board {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: .5em;
   grid-auto-rows: 150px;
   overflow: auto;
-  padding: .5em;
 }
 
-#box-wrapper a {
+#board a {
   position: relative;
   display: block;
 }
 
-#box-wrapper .box {
+#board .box {
   height: 100%;
   padding: 1em;
 }
-#box-wrapper .box {
+
+#board .box {
   white-space: pre-wrap;
 }
-#box-wrapper .box h1 {
+
+#board .box h1 {
   font-size: 1.5em;
   overflow-wrap: break-word;
 }
 
 @media only screen and (min-width: 640px) {
-  #box-wrapper {
+  #board {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
     grid-auto-rows: 140px;
     width: 100%;
     padding: 1em; /* to give space for boxes margin transitions */
   }
-  #box-wrapper a:nth-child(1) {
+
+  #board a:nth-child(1) {
     grid-column: 3/4;
   }
-  #box-wrapper a:nth-child(2) {
+
+  #board a:nth-child(2) {
     grid-column: 1/3;
     grid-row: 1/3;
   }
-  #box-wrapper a:nth-child(3) {
+
+  #board a:nth-child(3) {
     grid-column: 3/5;
     grid-row: 2/4;
   }
-  #box-wrapper a:nth-child(6) {
+
+  #board a:nth-child(6) {
     grid-column: 4/6;
     grid-row: 1/2;
   }
-  #box-wrapper .box-link:nth-child(1):hover .box { margin: -1em 0 0 0 }
-  #box-wrapper .box-link:nth-child(2):hover .box { margin: -1em 0 0 -1em }
-  #box-wrapper .box-link:nth-child(3):hover .box { margin: 1em 0 0 0 }
-  #box-wrapper .box-link:nth-child(4):hover .box { margin: 0 0 0 1em }
-  #box-wrapper .box-link:nth-child(5):hover .box { margin: 1em 0 0 -1em }
-  #box-wrapper .box-link:nth-child(6):hover .box { margin: -1em 0 0 1em }
-  #box-wrapper .box-link:nth-child(7):hover .box { margin: 1em 0 0 0 }
-  #box-wrapper .box-link:nth-child(8):hover .box { margin: 1em 0 0 1em }
+
+  #board .box-link:nth-child(1):hover .box {
+    margin: -1em 0 0 0
+  }
+
+  #board .box-link:nth-child(2):hover .box {
+    margin: -1em 0 0 -1em
+  }
+
+  #board .box-link:nth-child(3):hover .box {
+    margin: 1em 0 0 0
+  }
+
+  #board .box-link:nth-child(4):hover .box {
+    margin: 0 0 0 1em
+  }
+
+  #board .box-link:nth-child(5):hover .box {
+    margin: 1em 0 0 -1em
+  }
+
+  #board .box-link:nth-child(6):hover .box {
+    margin: -1em 0 0 1em
+  }
+
+  #board .box-link:nth-child(7):hover .box {
+    margin: 1em 0 0 0
+  }
+
+  #board .box-link:nth-child(8):hover .box {
+    margin: 1em 0 0 1em
+  }
 }
+
 @media only screen and (min-width: 768px) {
-  #box-wrapper {
+  #board {
     width: 100%;
   }
-  #box-wrapper .box h1 {
+
+  #board .box h1 {
     font-size: 1.65em;
   }
 }
+
 @media only screen and (min-width: 1024px) {
-  #box-wrapper {
+  #board {
     grid-auto-rows: 180px;
     width: 945px;
   }
-  #box-wrapper .box h1 {
+
+  #board .box h1 {
     font-size: 1.8em;
   }
 }
+
 @media only screen and (min-width: 1280px) {
-  #box-wrapper {
+  #board {
     grid-auto-rows: 200px;
     width: 1050px;
   }
 }
-@media only screen and (min-width: 1536px) {}
+
+@media only screen and (min-width: 1536px) {
+}
 
 /*=== Main-Menu Animation ===*/
-#box-wrapper .box {
+#board .box {
   height: 100%;
-  width:100%;
+  width: 100%;
   display: flex;
   text-align: center;
   align-items: center;
   justify-content: center;
   margin: 0; /* this for transition */
-  -webkit-transition: margin .1s ease-out;
-}
-
-#box-wrapper .box:hover {
   transition: margin .1s ease-out;
   -webkit-transition: margin .1s ease-out;
 }
-#box-wrapper .box:hover img {
+
+#board .box:hover {
+  transition: margin .1s ease-out;
+  -webkit-transition: margin .1s ease-out;
+}
+
+/*
+#board .box:hover img {
   transform: scale(1.15);
   transition: transform .1s ease-out;
   -webkit-transition: transform .1s ease-out;
 }
 
-/*
 #table {
   position: relative;
   top: 22.5vh; !*bak: calc(50vh - 375px)*!

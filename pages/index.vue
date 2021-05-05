@@ -1,19 +1,19 @@
 <template>
-  <div class="container">
+  <div class="container flex items-center">
     <div>
       <h1 class="title">Lutherie Urbaine 9.3</h1>
     </div>
 
-    <MenuIntro :categories="categories" />
-
+    <MenuIntro :categories="menus"/>
+<!--<pre>{{categories}}</pre>-->
   </div>
 </template>
 
 <script>
+import AxiosFetchData from '~/services/AxiosFetchData.js'
 
 export default {
-  layout: 'intro',
-  head () {
+  head() {
     return {
       title: 'Lutherie Urbaine 9.3',
       meta: [
@@ -25,10 +25,10 @@ export default {
       ]
     }
   },
-  asyncData({ $axios }) {
-    return $axios.get('https://lutherieurbaine93.herokuapp.com/categories').then(response => {
+  asyncData() {
+    return AxiosFetchData.getMenus().then(response => {
       return {
-        categories: response.data
+        menus: response.data
       }
     })
   }
@@ -36,10 +36,8 @@ export default {
 </script>
 
 <style scoped>
-/* Sample `apply` at-rules with Tailwind CSS*/
 .container {
-  @apply min-h-screen flex justify-center items-center text-center mx-auto;
+  @apply min-h-screen justify-center;
   flex-direction: column;
 }
-
 </style>

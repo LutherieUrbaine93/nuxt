@@ -11,7 +11,7 @@
 // import CatService from "~/services/CatService";
 
 export default {
-  name: 'TheFooter',
+  // name: 'PageFooter',
   props: {
     pageTitle: '',
     pageColor: '',

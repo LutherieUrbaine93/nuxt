@@ -1,7 +1,14 @@
 <template>
   <div>
-    <h1>Page "Presse"</h1>
-<!--    <pre>{{ pressArticles }}</pre>-->
+    <MenuNav :pageRoute="route"/>
+
+    <PageHeader :pageTitle="data.Entete" :pageColor="data.Couleur" :textDark="data.Texte_foncer"/>
+
+    <div class="container mx-auto py-10">
+      <h1>Page "Presse"</h1>
+      <pre>{{ data }}</pre>
+    </div>
+
   </div>
 </template>
 
@@ -23,16 +30,15 @@ export default {
   },
   data() {
     return {
-      pressArticles: []
+      route: this.$route.name,
+      data: []
     }
   },
   async asyncData({route}) {
     const response = await AxiosFetchData.getByRoute(route.name)
-    const pressArticles = response.data
-    console.log(route)
-
+    const data = response.data
     return {
-      pressArticles
+      data
     }
   }
 }

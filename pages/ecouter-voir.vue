@@ -5,7 +5,7 @@
     <PageHeader :pageTitle="data.Entete" :pageColor="data.Couleur" :textDark="data.Texte_foncer"/>
 
     <div class="container mx-auto py-10">
-      <h1>Page "Instrumentarium"</h1>
+      <h1>Page "Actualités"</h1>
       <pre>{{ data }}</pre>
     </div>
 
@@ -18,12 +18,12 @@ import AxiosFetchData from "~/services/AxiosFetchData";
 export default {
   head() {
     return {
-      title: 'Lutherie Urbaine 9.3 - Instrumentarium',
+      title: 'Lutherie Urbaine 9.3 - Écouter Voir',
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: 'Les instruments insolites exclusivements fabriqués par Lutherie Urbaine 9.3'
+          content: 'Les diffusions audios et vidéos de Lutherie Urbaine 9.3'
         }
       ]
     }
