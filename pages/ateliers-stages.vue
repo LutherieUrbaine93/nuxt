@@ -3,8 +3,8 @@
     <MenuNav/>
 
     <header>
-      <h2 class="text-center text-gray-400">Lutherie Urbaine 9.3</h2>
-      <h1 class="page-title text-center my-0">Ateliers & Stages</h1>
+      <h4 class="text-center text-gray-400">Lutherie Urbaine 9.3</h4>
+      <h2 class="page-title text-center my-0">Ateliers & Stages</h2>
     </header>
 
     <div class="wrapper container-lt" v-for="atelier in ateliers">

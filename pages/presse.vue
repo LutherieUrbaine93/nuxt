@@ -4,9 +4,14 @@
 
     <PageHeader :pageTitle="data.Entete" :pageColor="data.Couleur" :textDark="data.Texte_foncer"/>
 
-    <div class="container mx-auto py-10">
-      <h1>Page "Presse"</h1>
-      <pre>{{ data }}</pre>
+    <div class="container mx-auto py-10 flex flex-col items-center">
+
+      <div v-for="parution in parusData"
+           class="lg:w-1/2 mb-14">
+        <h4 class="mb-2">{{ parution.Titre }}</h4>
+        <p>{{ parution.Texte }}</p>
+        <p class="text-right"><span class="font-bold">{{ parution.Magazine }}</span> – {{ parution.Auteur }}</p>
+      </div>
     </div>
 
   </div>
@@ -37,8 +42,13 @@ export default {
   async asyncData({route}) {
     const response = await AxiosFetchData.getByRoute(route.name)
     const data = response.data
+
+    const parutions = await AxiosFetchData.getByRoute('parutions')
+    const parusData = parutions.data
+
     return {
-      data
+      data,
+      parusData
     }
   }
 }

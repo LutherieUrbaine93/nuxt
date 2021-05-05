@@ -5,8 +5,11 @@
     <PageHeader :pageTitle="data.Entete" :pageColor="data.Couleur" :textDark="data.Texte_foncer"/>
 
     <div class="container mx-auto py-10">
-      <h1>Page "Pédagogie de la création"</h1>
-      <pre>{{ data }}</pre>
+
+      <h4 class="md:w-2/3 text-center mx-auto">{{ data.Titre_gal1 }}</h4>
+
+      <h4 class="md:w-2/3 text-center mx-auto">{{ data.Titre_gal2 }}</h4>
+
     </div>
 
   </div>
@@ -28,7 +31,7 @@ export default {
       ]
     }
   },
-  data () {
+  data() {
     return {
       route: this.$route.name
     }

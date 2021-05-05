@@ -57,7 +57,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 /* Sample `apply` at-rules with Tailwind CSS*/
 .container {
-    /*@apply flex flex-row justify-center flex-column items-center text-center mx-auto;*/
+    /*@apply flex flex-row justify-center flex-col items-center text-center mx-auto;*/
     @apply px-4 sm:px-0 mx-auto;
 }
 .wrapper-row {

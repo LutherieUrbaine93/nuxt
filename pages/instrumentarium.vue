@@ -5,8 +5,7 @@
     <PageHeader :pageTitle="data.Entete" :pageColor="data.Couleur" :textDark="data.Texte_foncer"/>
 
     <div class="container mx-auto py-10">
-      <h1>Page "Instrumentarium"</h1>
-      <pre>{{ data }}</pre>
+      <h4 class="md:w-2/3 text-center mx-auto">{{ data.Introduction }}</h4>
     </div>
 
   </div>

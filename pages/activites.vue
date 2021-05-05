@@ -12,34 +12,34 @@
 
         <div class="circle-item">
           <div class="circle-text text-center">
-            <h4>{{ data.Description1 }}</h4>
+            <p>{{ data.Description1 }}</p>
           </div>
           <div class="circle-overlay">
-            <h2 class="text-gray-800">{{ data.Mot_cle1 }}</h2>
+            <h3 class="text-gray-800">{{ data.Mot_cle1 }}</h3>
           </div>
         </div>
 
         <div class="circle-item">
           <div class="circle-text text-center">
-            <h4>{{ data.Description2 }}</h4>
+            <p>{{ data.Description2 }}</p>
           </div>
           <div class="circle-overlay">
-            <h2 class="text-gray-800">{{ data.Mot_cle2 }}</h2>
+            <h3 class="text-gray-800">{{ data.Mot_cle2 }}</h3>
           </div>
         </div>
 
         <div class="circle-item">
           <div class="circle-text text-center">
-            <h4>{{ data.Description3 }}</h4>
+            <p>{{ data.Description3 }}</p>
           </div>
           <div class="circle-overlay">
-            <h2 class="text-gray-800">{{ data.Mot_cle3 }}</h2>
+            <h3 class="text-gray-800">{{ data.Mot_cle3 }}</h3>
           </div>
         </div>
 
         <div class="circle-item">
           <div class="circle-text text-center">
-            <h4>{{ data.Description4 }}</h4>
+            <p>{{ data.Description4 }}</p>
             <nuxt-link
               class="button px-4 py-2 text-xs font-semibold tracking-wider border-2 border-gray-300 rounded hover:bg-gray-200 text-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300"
               to="/ateliers-stages">
@@ -47,7 +47,7 @@
             </nuxt-link>
           </div>
           <div class="circle-overlay">
-            <h2 class="text-gray-800">{{ data.Mot_cle4 }}</h2>
+            <h3 class="text-gray-800">{{ data.Mot_cle4 }}</h3>
           </div>
         </div>
 

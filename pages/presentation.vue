@@ -25,7 +25,7 @@
         </div>
 
         <div class="cat-box p-1.5 lg:w-1/4">
-          <nuxt-link to="creations-tous-terrains">
+          <nuxt-link to="/creations-tous-terrains">
             <div class="text-center rounded-t p-4" :style="{ backgroundColor: creationsData.Couleur }">
               <h4 v-if="creationsData.Texte_foncer" class="text-gray-900">{{ data.Titre_cat2 }}</h4>
               <h4 v-else>{{ data.Titre_cat2 }}</h4>
@@ -37,7 +37,7 @@
         </div>
 
         <div class="cat-box p-1.5 lg:w-1/4">
-          <nuxt-link to="creations-tous-terrains">
+          <nuxt-link to="/instrumentarium">
             <div class="text-center rounded-t p-4" :style="{ backgroundColor: instrumentData.Couleur }">
               <h4 v-if="instrumentData.Texte_foncer" class="text-gray-900">{{ data.Titre_cat3 }}</h4>
               <h4 v-else>{{ data.Titre_cat3 }}</h4>
