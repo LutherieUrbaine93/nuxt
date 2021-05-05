@@ -84,6 +84,7 @@ export default {
   transition: width .5s ease-out, opacity .5s ease-out;
 }
 
+.back-line,
 .nav-label-home svg {
   opacity: 0;
   visibility: hidden;
@@ -91,6 +92,7 @@ export default {
   transition-property: opacity, visibility;
 }
 
+.in .back-line,
 .in .nav-label-home svg {
   opacity: 1;
   visibility: visible;
