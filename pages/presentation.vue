@@ -114,7 +114,7 @@ export default {
   -webkit-transition: margin .1s ease-out;
 }
 
-.cat-box:nth-child(1):hover .box {
+.cat-box:hover {
   margin: -1em 0 0 0
 }
 </style>

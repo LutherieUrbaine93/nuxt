@@ -12,6 +12,11 @@ export default {
     }
   },
 
+  // Avoid Trailing slash problems at the end of urls, by NOT generating html pages in folders
+  generate: {
+    subFolders: false
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'nuxt',
