@@ -13,18 +13,6 @@
 
 <script>
 export default {
-  head() {
-    return {
-      title: 'Lutherie Urbaine 9.3 - Instrumentarium',
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: 'Les instruments insolites exclusivements fabriqués par Lutherie Urbaine 9.3'
-        }
-      ]
-    }
-  },
   data () {
     return {
       route: this.$route.name
@@ -38,6 +26,18 @@ export default {
     return {
       pageMenu,
       pageData
+    }
+  },
+  head() {
+    return {
+      title: 'Lutherie Urbaine 9.3 - Instrumentarium',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Les instruments insolites exclusivements fabriqués par Lutherie Urbaine 9.3'
+        }
+      ]
     }
   }
 }

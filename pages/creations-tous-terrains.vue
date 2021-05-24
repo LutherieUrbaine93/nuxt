@@ -51,18 +51,6 @@
 
 <script>
 export default {
-  head() {
-    return {
-      title: 'Lutherie Urbaine 9.3 - Créations tous terrains',
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: 'La variété des créations artistiques que Lutherie Urbaine 9.3 vous réserve cette saison'
-        }
-      ]
-    }
-  },
   data() {
     return {
       route: this.$route.name
@@ -79,6 +67,18 @@ export default {
       pageMenu,
       pageData,
       creations
+    }
+  },
+  head() {
+    return {
+      title: 'Lutherie Urbaine 9.3 - Créations tous terrains',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'La variété des créations artistiques que Lutherie Urbaine 9.3 vous réserve cette saison'
+        }
+      ]
     }
   }
 }

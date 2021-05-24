@@ -88,3 +88,8 @@ sw.*
 
 # Vim swap files
 *.swp
+
+# Temporal files:
+pages/login.vue
+pages/signup.vue
+middleware/authenticated.js

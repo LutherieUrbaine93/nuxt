@@ -24,18 +24,6 @@
 
 <script>
 export default {
-  head() {
-    return {
-      title: 'Lutherie Urbaine 9.3 - Ateliers & Stages',
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: "Les ateliers et stages d'expression artistique de Lutherie Urbaine 9.3"
-        }
-      ]
-    }
-  },
   computed: {
     convertDate: function () {
       return this.ateliers.map((atel) => {
@@ -54,6 +42,18 @@ export default {
     console.log(ateliers)
 
     return {ateliers}
+  },
+  head() {
+    return {
+      title: 'Lutherie Urbaine 9.3 - Ateliers & Stages',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: "Les ateliers et stages d'expression artistique de Lutherie Urbaine 9.3"
+        }
+      ]
+    }
   }
 }
 </script>

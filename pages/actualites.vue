@@ -14,18 +14,6 @@
 
 <script>
 export default {
-  head() {
-    return {
-      title: 'Lutherie Urbaine 9.3 - Actualités',
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: "Les actus au sein de l'association Lutherie Urbaine 9.3"
-        }
-      ]
-    }
-  },
   data () {
     return {
       route: this.$route.name
@@ -39,6 +27,18 @@ export default {
     return {
       pageMenu,
       pageData
+    }
+  },
+  head() {
+    return {
+      title: 'Lutherie Urbaine 9.3 - Actualités',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: "Les actus au sein de l'association Lutherie Urbaine 9.3"
+        }
+      ]
     }
   }
 }

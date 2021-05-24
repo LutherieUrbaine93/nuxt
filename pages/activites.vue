@@ -90,18 +90,6 @@
 
 <script>
 export default {
-  head() {
-    return {
-      title: 'Lutherie Urbaine 9.3 - Nous proposons',
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: "Activités d'expression et de création, proposées par l'association Lutherie Urbaine 9.3"
-        }
-      ]
-    }
-  },
   data() {
     return {
       route: this.$route.name,
@@ -115,6 +103,18 @@ export default {
     return {
       pageMenu,
       pageData
+    }
+  },
+  head() {
+    return {
+      title: 'Lutherie Urbaine 9.3 - Nous proposons',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: "Activités d'expression et de création, proposées par l'association Lutherie Urbaine 9.3"
+        }
+      ]
     }
   }
 }

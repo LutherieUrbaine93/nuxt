@@ -19,6 +19,16 @@ import LogoC from "~/assets/svg/logoc.svg?inline"
 
 export default {
   components: {LogoC},
+  data() {
+    return {
+      menus: []
+    }
+  },
+  async asyncData({$strapi}) {
+    const sort = '?_sort=Ordre:ASC'
+    const menus = await $strapi.find(`menus${sort}`)
+    return {menus}
+  },
   head() {
     return {
       title: 'Lutherie Urbaine 9.3',
@@ -30,16 +40,6 @@ export default {
         }
       ]
     }
-  },
-  data() {
-    return {
-      menus: []
-    }
-  },
-  async asyncData({$strapi}) {
-    const sort = '?_sort=Ordre:ASC'
-    const menus = await $strapi.find(`menus${sort}`)
-    return {menus}
   }
 }
 </script>
