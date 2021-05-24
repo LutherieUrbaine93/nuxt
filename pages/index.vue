@@ -1,18 +1,24 @@
 <template>
   <div class="container flex items-center">
     <div>
-      <h1 class="title">Lutherie Urbaine 9.3</h1>
+
+      <h1 class="title"><LogoC class="fill-current h-12"/>Lutherie Urbaine 9.3</h1>
     </div>
 
-    <MenuIntro :categories="menus"/>
-<!--<pre>{{categories}}</pre>-->
+    <MenuIntro :menus="menus"/>
+
+    <IntroFooter/>
+
+    <HelloAssoWidget/>
+
   </div>
 </template>
 
 <script>
-import AxiosFetchData from '~/services/AxiosFetchData.js'
+import LogoC from "~/assets/svg/logoc.svg?inline"
 
 export default {
+  components: {LogoC},
   head() {
     return {
       title: 'Lutherie Urbaine 9.3',
@@ -25,12 +31,15 @@ export default {
       ]
     }
   },
-  asyncData() {
-    return AxiosFetchData.getMenus().then(response => {
-      return {
-        menus: response.data
-      }
-    })
+  data() {
+    return {
+      menus: []
+    }
+  },
+  async asyncData({$strapi}) {
+    const sort = '?_sort=Ordre:ASC'
+    const menus = await $strapi.find(`menus${sort}`)
+    return {menus}
   }
 }
 </script>

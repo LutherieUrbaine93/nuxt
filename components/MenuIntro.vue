@@ -2,13 +2,13 @@
     <div id="board">
 
       <nuxt-link class="box-link"
-                 v-for="category in categories"
-                 :key="category.id"
-                 :to="category.Lien_page">
-        <div :id="category.Lien_page" class="box rounded shadow-md" :style="{ backgroundColor: category.Couleur }">
+                 v-for="menu in menus"
+                 :key="menu.id"
+                 :to="menu.pageLink">
+        <div :id="menu.pageLink" class="box rounded shadow-md" :style="{ backgroundColor: menu.Couleur }">
           <!--img src="" class="img-bg" alt=""-->
-          <h4 v-if="category.Texte_foncer" style="color:#212121">{{ category.Nom }}</h4>
-          <h4 v-else>{{ category.Nom }}</h4>
+          <h4 v-if="menu.Texte_foncer" style="color:#212121">{{ menu.Nom }}</h4>
+          <h4 v-else>{{ menu.Nom }}</h4>
         </div>
       </nuxt-link>
 
@@ -16,11 +16,9 @@
 </template>
 
 <script>
-
 export default {
-  name: 'MainMenu',
   props: {
-    categories: Array
+    menus: Array
   }
 }
 </script>
@@ -152,7 +150,7 @@ export default {
   text-align: center;
   align-items: center;
   justify-content: center;
-  margin: 0; /* this for transition */
+  margin: 0;
   transition: margin .1s ease-out;
   -webkit-transition: margin .1s ease-out;
 }

@@ -7,24 +7,22 @@
       <h2 class="page-title text-center my-0">Ateliers & Stages</h2>
     </header>
 
-    <div class="wrapper container-lt" v-for="atelier in ateliers">
+    <div class="wrapper container-lt" v-for="(atelier, index) in ateliers">
       <div class="frame">
         <!--      <h1 class="text-center text-gray-400"></h1>-->
         <div class="title">
           <h1 class="text-center my-px">{{ atelier.Titre }}</h1>
+          <p class="text-center text-sm">{{ convertDate[index] }}</p>
         </div>
-        <p>{{ atelier.Description }}</p>
+        <div v-html="$md.render(atelier.Description)"></div>
       </div>
     </div>
-
     <PageFooter/>
   </div>
 
 </template>
 
 <script>
-import AxiosFetchData from '~/services/AxiosFetchData.js'
-
 export default {
   head() {
     return {
@@ -38,9 +36,22 @@ export default {
       ]
     }
   },
-  async asyncData({route}) {
-    const response = await AxiosFetchData.getByRoute(route.path)
-    const ateliers = response.data
+  computed: {
+    convertDate: function () {
+      return this.ateliers.map((atel) => {
+        const rawDate = atel.Date
+        const dayDate = rawDate.substr(0, rawDate.indexOf('T'))
+        const sptDate = dayDate.split("-")
+        return `${sptDate[2]}/${sptDate[1]}/${sptDate[0]}`
+      })
+    }
+  },
+  async asyncData({$strapi, route}) {
+    const page = route.path.substring(route.path.lastIndexOf('/') + 1) // removing slash at the begining of route.path
+    const sort = '?_sort=Date:ASC'
+    const ateliers = await $strapi.find(page + sort)
+
+    console.log(ateliers)
 
     return {ateliers}
   }

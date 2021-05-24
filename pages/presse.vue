@@ -2,14 +2,14 @@
   <div>
     <MenuNav :pageRoute="route"/>
 
-    <PageHeader :pageTitle="data.Entete" :pageColor="data.Couleur" :textDark="data.Texte_foncer"/>
+    <PageHeader :pageTitle="pageData.Entete" :pageColor="pageMenu.Couleur" :textDark="pageMenu.Texte_foncer"/>
 
     <div class="container mx-auto py-10 flex flex-col items-center">
 
-      <div v-for="parution in parusData"
+      <div v-for="parution in parutions"
            class="lg:w-1/2 mb-14">
         <h4 class="mb-2">{{ parution.Titre }}</h4>
-        <p>{{ parution.Texte }}</p>
+        <div v-html="$md.render(parution.Texte)"></div>
         <p class="text-right"><span class="font-bold">{{ parution.Magazine }}</span> – {{ parution.Auteur }}</p>
       </div>
     </div>
@@ -18,8 +18,6 @@
 </template>
 
 <script>
-import AxiosFetchData from '~/services/AxiosFetchData.js'
-
 export default {
   head() {
     return {
@@ -36,20 +34,28 @@ export default {
   data() {
     return {
       route: this.$route.name,
-      data: []
     }
   },
-  async asyncData({route}) {
-    const response = await AxiosFetchData.getByRoute(route.name)
-    const data = response.data
-
-    const parutions = await AxiosFetchData.getByRoute('parutions')
-    const parusData = parutions.data
+  async asyncData({$strapi, route}) {
+    // Fetch page data:
+    const pageData = await $strapi.find(route.name)
+    const pageMenu = pageData.menu
+    // Sorted contents:
+    const sort = '?_sort=Date:DESC'
+    const parutions = await $strapi.find(`parutions${sort}`)
 
     return {
-      data,
-      parusData
+      pageMenu,
+      pageData,
+      parutions
     }
   }
 }
 </script>
+
+<style scoped>
+a {
+  @apply italic underline;
+  text-decoration: underline;
+}
+</style>

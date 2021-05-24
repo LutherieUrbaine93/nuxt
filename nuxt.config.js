@@ -24,12 +24,12 @@ export default {
       lang: 'en',
     },
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Site de l\'association Lutherie Urbaine 9.3' },
+      {charset: 'utf-8'},
+      {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+      {hid: 'description', name: 'description', content: 'Site de l\'association Lutherie Urbaine 9.3'},
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css?family=Lora%7cRoboto%7cOpen+Sans:400,800&display=swap",
@@ -58,8 +58,39 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
+    '@nuxtjs/strapi',
+    '@nuxtjs/markdownit'
   ],
+  strapi: {
+    url : 'https://lutherieurbaine93.herokuapp.com',
+    entities: [
+      'menus',
+      { name: 'presentation',             type: 'single' },
+      'collaborateurs',
+      'associes',
+      'partenaires',
+      { name: 'pedagogie-de-la-creation', type: 'single' },
+      { name: 'actualites',               type: 'single' },
+      { name: 'creations-tous-terrains',  type: 'single' },
+      'creations',
+      { name: 'activites',                type: 'single' },
+      'ateliers-stages',
+      { name: 'instrumentarium',          type: 'single' },
+      { name: 'ecouter-voir',             type: 'single' },
+      { name: 'presse',                   type: 'single' },
+      'parutions',
+      'messages'
+    ]
+  },
+
+  markdownit: {
+    preset: 'default',
+    linkify: true,
+    breaks: true,
+    injected: true,
+    // use: ['markdown-it-div', 'markdown-it-attrs'],
+    runtime: true // Support `$md()`
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},

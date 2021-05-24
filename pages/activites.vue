@@ -2,72 +2,93 @@
   <div>
     <MenuNav :pageRoute="route"/>
 
-    <PageHeader :pageTitle="data.Entete" :pageColor="data.Couleur" :textDark="data.Texte_foncer"/>
+    <PageHeader :pageTitle="pageData.Entete" :pageColor="pageMenu.Couleur" :textDark="pageMenu.Texte_foncer"/>
 
-    <div class="container mx-auto py-10">
+    <div class="container-lt mx-auto py-10">
+
       <h4 class="text-center text-gray-400">Expositions d’instruments de musique</h4>
-      <h1 class="text-center my-px">{{ data.Theme }}</h1>
+      <h1 class="text-center my-px">{{ pageData.Theme }}</h1>
 
-      <div id="activites">
+      <div class="flex flex-wrap justify-evenly items-stretch sm:pt-6">
 
-        <div class="circle-item">
-          <div class="circle-text text-center">
-            <p>{{ data.Description1 }}</p>
+        <div class="relative p-1.5 sm:w-1/3 mt-10">
+          <div class="keyword absolute bg-gray-100 py-2 px-3 rounded">
+            <h4 class="text-center text-gray-900">{{ pageData.Mot_cle1 }}</h4>
           </div>
-          <div class="circle-overlay">
-            <h3 class="text-gray-800">{{ data.Mot_cle1 }}</h3>
+          <div class="rounded p-4 pt-8 border-2 text-center" :style="{ borderColor: pageData.Couleur }">
+            <p class="whitespace-pre-line">{{ pageData.Description1 }}</p>
+            <div v-if="pageData.Document1" class="pt-8 pb-5">
+              <a :href="pageData.Document1.url" target="_blank"
+                 class="button px-4 py-2 text-xs font-semibold tracking-wider border-2 border-gray-300 rounded hover:bg-gray-200 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300">
+                Voir prospectus
+              </a>
+            </div>
           </div>
         </div>
 
-        <div class="circle-item">
-          <div class="circle-text text-center">
-            <p>{{ data.Description2 }}</p>
+        <div class="relative p-1.5 sm:w-1/3 mt-10">
+          <div class="keyword absolute bg-gray-100 py-2 px-3 rounded">
+            <h4 class="text-center text-gray-900">{{ pageData.Mot_cle2 }}</h4>
           </div>
-          <div class="circle-overlay">
-            <h3 class="text-gray-800">{{ data.Mot_cle2 }}</h3>
-          </div>
-        </div>
-
-        <div class="circle-item">
-          <div class="circle-text text-center">
-            <p>{{ data.Description3 }}</p>
-          </div>
-          <div class="circle-overlay">
-            <h3 class="text-gray-800">{{ data.Mot_cle3 }}</h3>
-          </div>
-        </div>
-
-        <div class="circle-item">
-          <div class="circle-text text-center">
-            <p>{{ data.Description4 }}</p>
-            <nuxt-link
-              class="button px-4 py-2 text-xs font-semibold tracking-wider border-2 border-gray-300 rounded hover:bg-gray-200 text-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300"
-              to="/ateliers-stages">
-              Ateliers & Stages
-            </nuxt-link>
-          </div>
-          <div class="circle-overlay">
-            <h3 class="text-gray-800">{{ data.Mot_cle4 }}</h3>
+          <div class="rounded p-4 pt-8 border-2 text-center" :style="{ borderColor: pageData.Couleur }">
+            <p class="whitespace-pre-line">{{ pageData.Description2 }}</p>
+            <div v-if="pageData.Document2" class="pt-8 pb-5">
+              <a :href="pageData.Document2.url" target="_blank"
+                 class="button px-4 py-2 text-xs font-semibold tracking-wider border-2 border-gray-300 rounded hover:bg-gray-200 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300">
+                Voir prospectus
+              </a>
+            </div>
           </div>
         </div>
 
       </div>
-      <div class="text text-center">
-        <h4>{{ data.Texte }}</h4>
+
+      <div class="flex flex-wrap justify-evenly items-stretch sm:pt-6">
+
+        <div class="relative p-1.5 sm:w-1/3 mt-10">
+          <div class="keyword absolute bg-gray-100 py-2 px-3 rounded">
+            <h4 class="text-center text-gray-900">{{ pageData.Mot_cle3 }}</h4>
+          </div>
+          <div class="rounded p-4 pt-8 border-2 text-center" :style="{ borderColor: pageData.Couleur }">
+            <p class="whitespace-pre-line">{{ pageData.Description3 }}</p>
+            <div v-if="pageData.Document2" class="pt-8 pb-5">
+              <a :href="pageData.Document2.url" target="_blank"
+                 class="button px-4 py-2 text-xs font-semibold tracking-wider border-2 border-gray-300 rounded hover:bg-gray-200 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300">
+                Voir prospectus
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative p-1.5 sm:w-1/3 mt-10">
+          <div class="keyword absolute bg-gray-100 py-2 px-3 rounded">
+            <h4 class="text-center text-gray-900">{{ pageData.Mot_cle4 }}</h4>
+          </div>
+          <div class="rounded p-4 pt-8 border-2 text-center" :style="{ borderColor: pageData.Couleur }">
+            <p class="whitespace-pre-line">{{ pageData.Description4 }}</p>
+            <div class="pt-8 pb-5">
+              <nuxt-link
+                class="button text-center px-4 py-2 text-xs font-semibold tracking-wider border-2 border-gray-300 rounded bg-red-700 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-gray-300"
+                to="/ateliers-stages">
+                Ateliers & Stages
+              </nuxt-link>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <!--     <pre>{{ activDataObjMots }}</pre>
-          <pre>{{ activDataObjDesc }}</pre>
-          <pre>{{ MotsDescObj }}</pre>
-             <div v-for="activity in activities">
-              </div>-->
+      <div class="flex flex-wrap justify-center sm:pt-8">
+        <div class="sm:w-3/4 text-center mt-8">
+          <h4>{{ pageData.Texte }}</h4>
+        </div>
+      </div>
+
     </div>
   </div>
 </template>
 
 <script>
-import AxiosFetchData from '~/services/AxiosFetchData.js'
-
 export default {
   head() {
     return {
@@ -78,46 +99,34 @@ export default {
           name: 'description',
           content: "Activités d'expression et de création, proposées par l'association Lutherie Urbaine 9.3"
         }
-      ],
-      script: [
-        {
-          type: 'module',
-          src: '/js/AnimatedCircles.js',
-          body: true
-        }
       ]
     }
   },
   data() {
     return {
       route: this.$route.name,
-      activities: {}
     }
   },
-  async asyncData({route}) {
-    const category = await AxiosFetchData.getByRoute(route.name)
-    const data = category.data
-    /*    const activDataArray = Object.entries(activities)
-        // Object for "Mot_cles":
-        const activDataArrayMots = activDataArray.filter(([key, value]) => key.startsWith('Mot_cle'))
-        const activDataObjMots = Object.fromEntries(activDataArrayMots)
-        // Object for "Mot_cles":
-        const activDataArrayDesc = activDataArray.filter(([key, value]) => key.startsWith('Description'))
-        const activDataObjDesc = Object.fromEntries(activDataArrayDesc)
-        const MotsDescObj = {...activDataObjMots, ...activDataObjDesc}*/
+  async asyncData({$strapi, route}) {
+    // Fetch page data
+    const pageData = await $strapi.find(route.name)
+    const pageMenu = pageData.menu
 
     return {
-      data,
-      /*      activDataArray,
-            activDataObjMots,
-            activDataObjDesc,
-            MotsDescObj*/
+      pageMenu,
+      pageData
     }
   }
 }
 </script>
 
 <style scoped>
+.keyword {
+  top: -1em;
+  left: -.5em;
+  transform: rotate(-8deg);
+}
+
 #activites {
   display: flex;
   flex-wrap: wrap;

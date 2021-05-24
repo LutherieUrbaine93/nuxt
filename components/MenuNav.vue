@@ -9,17 +9,17 @@
 
     <nav :class="{in: onScreen}">
       <nuxt-link class="nav-label group"
-                 v-for="category in categories"
-                 :to="category.Lien_page"
-                 :key="category.id"
-                 :style="{ backgroundColor: category.Couleur }">
-        <h1 v-if="category.Lien_page === pageRoute && category.Texte_foncer" class="text-gray-800 line-through">{{ category.Nom }}</h1>
+                 v-for="menu in sortedMenus"
+                 :to="menu.pageLink"
+                 :key="menu.id"
+                 :style="{ backgroundColor: menu.Couleur }">
+        <h1 v-if="menu.pageLink === pageRoute && menu.Texte_foncer" class="text-gray-800 line-through">{{ menu.Nom }}</h1>
 
-        <h1 v-else-if="category.Texte_foncer" class="text-gray-800 group-hover:underline">{{ category.Nom }}</h1>
+        <h1 v-else-if="menu.Texte_foncer" class="text-gray-800 group-hover:underline">{{ menu.Nom }}</h1>
 
-        <h1 v-else-if="category.Lien_page === pageRoute" class="line-through">{{ category.Nom }}</h1>
+        <h1 v-else-if="menu.pageLink === pageRoute" class="line-through">{{ menu.Nom }}</h1>
 
-        <h1 v-else class="group-hover:underline">{{ category.Nom }}</h1>
+        <h1 v-else class="group-hover:underline">{{ menu.Nom }}</h1>
       </nuxt-link>
     </nav>
 
@@ -36,11 +36,9 @@
 </template>
 
 <script>
-// import FetchData from '~/services/FetchData.js'
 import HomeIcon from "~/assets/svg/home.svg?inline"
 
 export default {
-  // name: 'MenuNav',
   props: {
     pageRoute: '',
   },
@@ -55,11 +53,16 @@ export default {
     return {
       isClosed: false,
       onScreen: false,
-      categories: []
+      menus: []
+    }
+  },
+  computed: {
+    sortedMenus: function() {
+      return this.menus.sort((a, b) => a.Ordre - b.Ordre )
     }
   },
   async fetch() {
-    this.categories = await fetch('https://lutherieurbaine93.herokuapp.com/menus')
+    this.menus = await fetch('https://lutherieurbaine93.herokuapp.com/menus')
       .then(resp => resp.json())
   }
 }

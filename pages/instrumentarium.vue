@@ -2,18 +2,16 @@
   <div>
     <MenuNav :pageRoute="route"/>
 
-    <PageHeader :pageTitle="data.Entete" :pageColor="data.Couleur" :textDark="data.Texte_foncer"/>
+    <PageHeader :pageTitle="pageData.Entete" :pageColor="pageMenu.Couleur" :textDark="pageMenu.Texte_foncer"/>
 
     <div class="container mx-auto py-10">
-      <h4 class="md:w-2/3 text-center mx-auto">{{ data.Introduction }}</h4>
+      <h4 class="md:w-2/3 text-center mx-auto">{{ pageData.Introduction }}</h4>
     </div>
 
   </div>
 </template>
 
 <script>
-import AxiosFetchData from "~/services/AxiosFetchData";
-
 export default {
   head() {
     return {
@@ -32,11 +30,14 @@ export default {
       route: this.$route.name
     }
   },
-  async asyncData({route}) {
-    const response = await AxiosFetchData.getByRoute(route.name)
-    const data = response.data
+  async asyncData({$strapi, route}) {
+    // Fetch page data:
+    const pageData = await $strapi.find(route.name)
+    const pageMenu = pageData.menu
+
     return {
-      data
+      pageMenu,
+      pageData
     }
   }
 }
