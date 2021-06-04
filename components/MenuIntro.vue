@@ -1,24 +1,25 @@
 <template>
-    <div id="board">
 
-      <nuxt-link class="box-link"
-                 v-for="menu in menus"
+    <div id="board">
+      <nuxt-link v-for="menu in menus"
                  :key="menu.id"
-                 :to="menu.pageLink">
-        <div :id="menu.pageLink" class="box rounded shadow-md" :style="{ backgroundColor: menu.Couleur }">
+                 :to="menu.pageLink"
+                 class="box-link">
+        <div :id="menu.pageLink" class="box rounded sm:shadow" :style="{ backgroundColor: menu.Couleur }">
           <!--img src="" class="img-bg" alt=""-->
           <h4 v-if="menu.Texte_foncer" style="color:#212121">{{ menu.Nom }}</h4>
           <h4 v-else>{{ menu.Nom }}</h4>
         </div>
       </nuxt-link>
-
     </div>
+
 </template>
 
 <script>
 export default {
   props: {
-    menus: Array
+    menus: Array,
+    default: () => []
   }
 }
 </script>
@@ -56,7 +57,7 @@ export default {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
     grid-auto-rows: 140px;
     width: 100%;
-    padding: 1em; /* to give space for boxes margin transitions */
+    padding: 1.25em; /* to give space for boxes margin transitions */
   }
 
   #board a:nth-child(1) {

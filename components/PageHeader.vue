@@ -1,21 +1,24 @@
 <template>
-  <header :style="{ backgroundColor: pageColor }">
-<!--    <h1 classe="text-center" v-if="$fetchState.pending" style="color:#212121">Lutherie Urbaine 9.3</h1>-->
-    <h1 class="text-center" v-if="textDark" style="color:#212121">{{ pageTitle }}</h1>
-    <h1 class="text-center" v-else>{{ pageTitle }}</h1>
 
+  <header class="flex-grow-0 flex-shrink bg-gray-900" :style="{ backgroundColor: pageColor }">
+<!--    <h1 classe="text-center" v-if="$fetchState.pending" style="color:#212121">Lutherie Urbaine 9.3</h1>-->
+    <h1 v-if="textDark" class="text-center" style="color:#212121">{{ pageTitle }}</h1>
+    <h1 v-else class="text-center">{{ pageTitle }}</h1>
   </header>
 
 </template>
 
 <script>
-// import CatService from "~/services/CatService";
-
 export default {
-  // name: 'PageHeader',
   props: {
-    pageTitle: '',
-    pageColor: '',
+    pageTitle: {
+      type: String,
+      default: ''
+    },
+    pageColor: {
+      type: String,
+      default: ''
+    },
     textDark: false
   }
 }
@@ -31,6 +34,8 @@ header {
   justify-content: center;
   overflow: hidden;
   padding: 4em 1em 1em;
+
+  flex-basis: auto;
 }
 
 @media only screen and (min-width: 640px) {

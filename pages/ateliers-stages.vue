@@ -1,45 +1,41 @@
 <template>
-  <div>
+  <div class="flex flex-col min-h-screen">
+
     <MenuNav/>
 
-    <header>
+    <header class="flex-grow-0 flex-shrink">
       <h4 class="text-center text-gray-400">Lutherie Urbaine 9.3</h4>
       <h2 class="page-title text-center my-0">Ateliers & Stages</h2>
     </header>
 
-    <div class="wrapper container-lt" v-for="(atelier, index) in ateliers">
-      <div class="frame">
-        <!--      <h1 class="text-center text-gray-400"></h1>-->
-        <div class="title">
-          <h1 class="text-center my-px">{{ atelier.Titre }}</h1>
-          <p class="text-center text-sm">{{ convertDate[index] }}</p>
+    <div class="container-lt flex-grow flex-shrink mx-auto py-10">
+
+      <div v-for="(atelier, index) in ateliers" class="wrapper">
+        <div class="frame">
+          <!--      <h1 class="text-center text-gray-400"></h1>-->
+          <div class="title">
+            <h1 class="text-center my-px">{{ atelier.Titre }}</h1>
+            <p class="text-center text-sm">{{ convertDate[index] }}</p>
+          </div>
+          <!--warning 'v-html' directive can lead to XSS attack:-->
+          <div v-html="$md.render(atelier.Description)"></div>
         </div>
-        <div v-html="$md.render(atelier.Description)"></div>
       </div>
+
     </div>
-    <PageFooter/>
+
+    <PageFooter />
+
   </div>
 
 </template>
 
 <script>
 export default {
-  computed: {
-    convertDate: function () {
-      return this.ateliers.map((atel) => {
-        const rawDate = atel.Date
-        const dayDate = rawDate.substr(0, rawDate.indexOf('T'))
-        const sptDate = dayDate.split("-")
-        return `${sptDate[2]}/${sptDate[1]}/${sptDate[0]}`
-      })
-    }
-  },
   async asyncData({$strapi, route}) {
     const page = route.path.substring(route.path.lastIndexOf('/') + 1) // removing slash at the begining of route.path
     const sort = '?_sort=Date:ASC'
     const ateliers = await $strapi.find(page + sort)
-
-    console.log(ateliers)
 
     return {ateliers}
   },
@@ -53,6 +49,16 @@ export default {
           content: "Les ateliers et stages d'expression artistique de Lutherie Urbaine 9.3"
         }
       ]
+    }
+  },
+  computed: {
+    convertDate: function () {
+      return this.ateliers.map((atel) => {
+        const rawDate = atel.Date
+        const dayDate = rawDate.substr(0, rawDate.indexOf('T'))
+        const sptDate = dayDate.split("-")
+        return `${sptDate[2]}/${sptDate[1]}/${sptDate[0]}`
+      })
     }
   }
 }
@@ -90,12 +96,14 @@ header {
     margin: 2em auto 0;
     padding: 3em;
   }
+
   .frame {
     border: 1px solid var(--whitesmoke);
     padding: 2.5em 2em;
     flex-direction: row;
 
   }
+
   .title {
     position: absolute;
     top: -1.3em;

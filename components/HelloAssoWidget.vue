@@ -8,14 +8,14 @@
        xl:w-72 xl:h-72
        2xl:w-96 2xl:h-96">
     <a :href="helloAsso" target="_blank">
-      <div @mouseover="hover = true"
-           @mouseleave="hover = false"
-           class="circle absolute w-full h-full rounded-full shadow-md
+      <div class="circle absolute w-full h-full rounded-full shadow-md
            -top-16 -right-16
            md:-top-20 md:-right-20
            lg:-top-24 lg:-right-24
            xl:-top-28 xl:-right-28
-           2xl:-top-40 2xl:-right-40">
+           2xl:-top-40 2xl:-right-40"
+           @mouseover="hover = true"
+           @mouseleave="hover = false">
       </div>
     </a>
 

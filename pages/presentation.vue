@@ -1,8 +1,8 @@
 <template>
   <div>
-    <MenuNav :pageRoute="route"/>
+    <MenuNav :page-route="route"/>
 
-    <PageHeader :pageTitle="pageData.Entete" :pageColor="pageMenu.Couleur" :textDark="pageMenu.Texte_foncer"/>
+    <PageHeader :page-title="pageData.Entete" :page-color="pageMenu.Couleur" :text-dark="pageMenu.Texte_foncer"/>
 
     <div class="container mx-auto py-10">
 
@@ -85,16 +85,18 @@
         <div class="bg-gray-800 px-2 sm:px-8 py-3 sm:my-14 rounded">
           <h2 class="text-center mx-auto underline">{{ pageData.Sous_titre3 }}</h2>
           <div class="flex flex-col mt-5">
-              <p v-for="partenaire in partenaires" :key="partenaire.Ordre" class="p-3">
-                <a v-if="partenaire.Lien" :href="partenaire.Lien" target="_blank">
-                  <span class="font-black underline">{{ partenaire.Nom }}</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-flex" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
-                <span v-else class="font-black">{{ partenaire.Nom }}</span>
-                <span v-if="partenaire.Lieu">- {{ partenaire.Lieu }}</span>
-              </p>
+            <p v-for="partenaire in partenaires" :key="partenaire.Ordre" class="p-3">
+              <a v-if="partenaire.Lien" :href="partenaire.Lien" target="_blank">
+                <span class="font-black underline">{{ partenaire.Nom }}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-flex" fill="none" viewBox="0 0 24 24"
+                     stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                </svg>
+              </a>
+              <span v-else class="font-black">{{ partenaire.Nom }}</span>
+              <span v-if="partenaire.Lieu">- {{ partenaire.Lieu }}</span>
+            </p>
           </div>
         </div>
 
@@ -115,34 +117,20 @@
       </div>
 
       <div class="flex justify-center">
-        <ContactForm/>
+        <div class="sm:w-1/3">
+          <ContactForm/>
+        </div>
       </div>
 
     </div>
 
-    <PageFooter/>
+    <PageFooter :page-color="pageMenu.Couleur"/>
+
   </div>
 </template>
 
 <script>
 export default {
-  head() {
-    return {
-      title: 'Lutherie Urbaine 9.3 - Présentation',
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: "Présentation de l'association Lutherie Urbaine 9.3"
-        }
-      ]
-    }
-  },
-  data() {
-    return {
-      route: this.$route.name,
-    }
-  },
   async asyncData({$strapi, route}) {
     // Fetch page data:
     const pageData = await $strapi.find(route.name)
@@ -169,6 +157,23 @@ export default {
       collaborateurs,
       associes,
       partenaires
+    }
+  },
+  data() {
+    return {
+      route: this.$route.name,
+    }
+  },
+  head() {
+    return {
+      title: 'Lutherie Urbaine 9.3 - Présentation',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: "Présentation de l'association Lutherie Urbaine 9.3"
+        }
+      ]
     }
   }
 }

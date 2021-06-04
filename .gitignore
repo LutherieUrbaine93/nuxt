@@ -90,6 +90,17 @@ sw.*
 *.swp
 
 # Temporal files:
+components/BaseInput.vue
+components/HelloAssoWidget.vue
+components/MarkdownTest.vue
+components/MenuNavVuex.vue
+components/PageHeaderNew.vue
+components/SvgIcons.vue
+middleware/authenticated.js
 pages/login.vue
 pages/signup.vue
-middleware/authenticated.js
+
+plugins/gallery.js
+
+static/js/AnimatedCircles.js
+store

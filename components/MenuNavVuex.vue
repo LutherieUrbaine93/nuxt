@@ -8,7 +8,7 @@
     </div>
 
     <nav :class="{in: onScreen}">
-      <nuxt-link v-for="menu in sortedMenus"
+      <nuxt-link v-for="menu in menus"
                  :key="menu.id"
                  :to="menu.pageLink"
                  class="nav-label group"
@@ -38,6 +38,7 @@
 
 <script>
 import HomeIcon from "~/assets/svg/home.svg?inline"
+import {mapState, mapActions} from "vuex"
 
 export default {
   components: {HomeIcon},
@@ -47,26 +48,23 @@ export default {
       default: ''
     }
   },
-  async fetch() {
-    this.menus = await this.$strapi.find('menus')
-  },
   data() {
     return {
       isClosed: false,
       onScreen: false,
-      menus: []
+      // menus: []
     }
   },
-  computed: {
-    sortedMenus: function () {
-      return this.menus.sort((a, b) => a.Ordre - b.Ordre)
-    }
-  },
+  computed: mapState(['menus']),
   methods: {
+    ...mapActions(['fetchMenus']),
     menu: function () {
       this.isClosed = !this.isClosed
       this.onScreen = !this.onScreen
     }
+  },
+  created() {
+    this.fetchMenus()
   }
 }
 </script>

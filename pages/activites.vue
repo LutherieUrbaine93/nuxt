@@ -1,10 +1,11 @@
 <template>
-  <div>
-    <MenuNav :pageRoute="route"/>
+  <div class="flex flex-col min-h-screen">
 
-    <PageHeader :pageTitle="pageData.Entete" :pageColor="pageMenu.Couleur" :textDark="pageMenu.Texte_foncer"/>
+    <MenuNav :page-route="route"/>
 
-    <div class="container-lt mx-auto py-10">
+    <PageHeader :page-title="pageData.Entete" :page-color="pageMenu.Couleur" :text-dark="pageMenu.Texte_foncer"/>
+
+    <div class="container-lt flex-grow flex-shrink mx-auto py-10">
 
       <h4 class="text-center text-gray-400">Expositions d’instruments de musique</h4>
       <h1 class="text-center my-px">{{ pageData.Theme }}</h1>
@@ -85,16 +86,14 @@
       </div>
 
     </div>
+
+    <PageFooter :page-color="pageMenu.Couleur"/>
+
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      route: this.$route.name,
-    }
-  },
   async asyncData({$strapi, route}) {
     // Fetch page data
     const pageData = await $strapi.find(route.name)
@@ -103,6 +102,11 @@ export default {
     return {
       pageMenu,
       pageData
+    }
+  },
+  data() {
+    return {
+      route: this.$route.name,
     }
   },
   head() {
@@ -121,6 +125,10 @@ export default {
 </script>
 
 <style scoped>
+.container-lt {
+  flex-basis: auto
+}
+
 .keyword {
   top: -1em;
   left: -.5em;

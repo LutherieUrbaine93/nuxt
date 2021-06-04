@@ -41,7 +41,10 @@ export default {
   css: ['@/assets/css/main.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    '~plugins/vue-final-modal.js',
+    // { src: '~/plugins/gallery', mode: 'client' }
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -71,12 +74,14 @@ export default {
       'partenaires',
       { name: 'pedagogie-de-la-creation', type: 'single' },
       { name: 'actualites',               type: 'single' },
+      'actus',
       { name: 'creations-tous-terrains',  type: 'single' },
       'creations',
       { name: 'activites',                type: 'single' },
       'ateliers-stages',
       { name: 'instrumentarium',          type: 'single' },
       { name: 'ecouter-voir',             type: 'single' },
+      'videos',
       { name: 'presse',                   type: 'single' },
       'parutions',
       'messages'
@@ -96,5 +101,7 @@ export default {
   axios: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    transpile: ['vue-final-modal']
+  },
 }

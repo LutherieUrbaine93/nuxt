@@ -1,33 +1,24 @@
 <template>
-  <div class="container flex items-center">
-    <div>
-
-      <h1 class="title"><LogoC class="fill-current h-12"/>Lutherie Urbaine 9.3</h1>
-    </div>
+  <div class="container flex flex-col flex-grow flex-shrink items-center justify-center">
 
     <MenuIntro :menus="menus"/>
-
-    <IntroFooter/>
-
-    <HelloAssoWidget/>
+<!--    <HelloAssoWidget/>-->
 
   </div>
 </template>
 
 <script>
-import LogoC from "~/assets/svg/logoc.svg?inline"
-
 export default {
-  components: {LogoC},
-  data() {
-    return {
-      menus: []
-    }
-  },
+  layout: 'intro',
   async asyncData({$strapi}) {
     const sort = '?_sort=Ordre:ASC'
     const menus = await $strapi.find(`menus${sort}`)
     return {menus}
+  },
+  data() {
+    return {
+      menus: []
+    }
   },
   head() {
     return {
@@ -46,7 +37,6 @@ export default {
 
 <style scoped>
 .container {
-  @apply min-h-screen justify-center;
-  flex-direction: column;
+  flex-basis: auto
 }
 </style>
