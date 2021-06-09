@@ -58,12 +58,12 @@ export default {
     }
   },
   computed: {
-    sortedMenus: function () {
+    sortedMenus() {
       return this.menus.sort((a, b) => a.Ordre - b.Ordre)
     }
   },
   methods: {
-    menu: function () {
+    menu() {
       this.isClosed = !this.isClosed
       this.onScreen = !this.onScreen
     }

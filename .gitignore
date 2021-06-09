@@ -96,11 +96,7 @@ components/MarkdownTest.vue
 components/MenuNavVuex.vue
 components/PageHeaderNew.vue
 components/SvgIcons.vue
-middleware/authenticated.js
-pages/login.vue
+
 pages/signup.vue
-
-plugins/gallery.js
-
 static/js/AnimatedCircles.js
 store

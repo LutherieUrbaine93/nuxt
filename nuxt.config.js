@@ -2,7 +2,7 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
   router: {
-    base: '/nuxt/'
+    // base: '/nuxt/'
   },
 
   // add the URL of lu93 API
@@ -43,7 +43,7 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~plugins/vue-final-modal.js',
-    // { src: '~/plugins/gallery', mode: 'client' }
+    '~plugins/lightGallery.client.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -62,6 +62,15 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/strapi',
+    ['nuxt-mail', {
+      message: {
+        to: 'tasticed@gmail.com',
+      },
+      smtp: {
+        host: "smtp.gmail.com",
+        port: 465,
+      },
+    }],
     '@nuxtjs/markdownit'
   ],
   strapi: {

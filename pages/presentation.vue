@@ -4,16 +4,16 @@
 
     <PageHeader :page-title="pageData.Entete" :page-color="pageMenu.Couleur" :text-dark="pageMenu.Texte_foncer"/>
 
-    <div class="container mx-auto py-10">
+    <div class="container-lt mx-auto py-10">
 
       <h4 class="md:w-2/3 text-center mx-auto">{{ pageData.Introduction }}</h4>
 
-      <img class="w-2/3 sm:w-1/4 lg:w-1/6 m-auto mt-8" :src="pageData.Intro_img.url" alt="dans un sourire">
+      <img class="sm:w-1/3 lg:w-1/4 m-auto mt-8" :src="pageData.Intro_img.url" alt="dans un sourire">
 
-      <p class="md:w-2/3 lg:w-1/2 text-center mx-auto py-14">{{ pageData.Historique }}</p>
+      <p class="text-center mx-auto py-14">{{ pageData.Historique }}</p>
 
-      <div class="wrapper-row items-stretch">
-        <nuxt-link to="/pedagogie-de-la-creation" class="link p-1.5 lg:w-1/4">
+      <div class="flex items-stretch">
+        <nuxt-link to="/pedagogie-de-la-creation" class="link p-1.5 lg:w-1/3">
           <div class="box shadow-md">
             <div class="text-center rounded-t p-4" :style="{ backgroundColor: pedaMenu.Couleur }">
               <h4 v-if="pedaMenu.Texte_foncer" class="text-gray-900">{{ pageData.Titre_cat1 }}</h4>
@@ -25,7 +25,7 @@
           </div>
         </nuxt-link>
 
-        <nuxt-link to="/creations-tous-terrains" class="link p-1.5 lg:w-1/4">
+        <nuxt-link to="/creations-tous-terrains" class="link p-1.5 lg:w-1/3">
           <div class="box shadow-md">
             <div class="text-center rounded-t p-4" :style="{ backgroundColor: creaMenu.Couleur }">
               <h4 v-if="creaMenu.Texte_foncer" class="text-gray-900">{{ pageData.Titre_cat2 }}</h4>
@@ -37,7 +37,7 @@
           </div>
         </nuxt-link>
 
-        <nuxt-link to="/instrumentarium" class="link p-1.5 lg:w-1/4">
+        <nuxt-link to="/instrumentarium" class="link p-1.5 lg:w-1/3">
           <div class="box shadow-md">
             <div class="text-center rounded-t p-4" :style="{ backgroundColor: instMenu.Couleur }">
               <h4 v-if="instMenu.Texte_foncer" class="text-gray-900">{{ pageData.Titre_cat3 }}</h4>
@@ -54,10 +54,10 @@
         <div class="w-1/3 sm:w-1/6 h-0.5 my-10" :style="{ backgroundColor: pageMenu.Couleur }"></div>
       </div>
 
-      <!-- L'équipe-->
-      <h2 class="md:w-2/3 text-center mx-auto">{{ pageData.Sous_titre1 }}</h2>
-      <div class="wrapper-row lg:px-24 xl:px-40 mt-5">
-        <div v-for="collab in collaborateurs" :key="collab.Ordre" class="lg:w-1/4 p-5">
+      <!-- Les cofondateurs & amis -->
+      <h2 class="text-center mx-auto">{{ pageData.Sous_titre1 }}</h2>
+      <div class="flex mt-5">
+        <div v-for="collab in collaborateurs" :key="collab.Ordre" class="p-1">
           <img :src="collab.Photo.url" :alt="collab.Prenom" class="rounded-full"/>
           <h5 class="text-center mt-2">{{ collab.Prenom }}</h5>
         </div>
@@ -67,7 +67,7 @@
         <div class="w-1/3 sm:w-1/6 h-0.5 my-14" :style="{ backgroundColor: pageMenu.Couleur }"></div>
       </div>
 
-      <!-- Le Bureau d’association 202...-->
+      <!-- Le Bureau d’association 202...
       <h2 class="md:w-2/3 text-center mx-auto">{{ pageData.Sous_titre2 }}</h2>
       <div class="flex flex-col items-center lg:px-24 xl:px-40 mt-5">
         <div v-for="associe in associes" :key="associe.Ordre" class="lg:w-1/4 p-5">
@@ -79,7 +79,7 @@
       <div class="wrapper-row">
         <div class="w-1/3 sm:w-1/6 h-0.5 my-14" :style="{ backgroundColor: pageMenu.Couleur }"></div>
       </div>
-
+      -->
       <div class="flex justify-evenly flex-wrap">
         <!-- Structures partenaires -->
         <div class="bg-gray-800 px-2 sm:px-8 py-3 sm:my-14 rounded">
@@ -116,8 +116,9 @@
         <div class="w-1/3 sm:w-1/6 h-0.5 my-14" :style="{ backgroundColor: pageMenu.Couleur }"></div>
       </div>
 
+      <!-- Contact Form -->
       <div class="flex justify-center">
-        <div class="sm:w-1/3">
+        <div class="sm:w-2/3">
           <ContactForm/>
         </div>
       </div>

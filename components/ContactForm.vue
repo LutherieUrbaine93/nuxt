@@ -73,7 +73,8 @@
 
       <div class="">
         <span class="inline-flex rounded-md shadow-sm">
-          <button type="submit" class="inline-flex justify-center py-3 px-6 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-carnelian hover:bg-carnelian-light focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-carnelian-dark transition duration-200 ease-in-out">
+          <button type="submit"
+                  class="inline-flex justify-center py-3 px-6 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-carnelian hover:bg-carnelian-light focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-carnelian-dark transition duration-200 ease-in-out">
             {{ loading ? "Message envoyé..." : "Envoyer" }}
           </button>
         </span>
@@ -116,6 +117,13 @@ export default {
         this.error = error.message
       }
       this.loading = false
+    },
+    sendMail() {
+      this.$mail.send({
+        from: this.email,
+        subject: `Contact form ${this.name}`,
+        text: this.message
+      })
     }
   }
 }

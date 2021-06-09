@@ -13,15 +13,18 @@
         <div class="flex flex-grow">
           <button @click="goToAsso"
                   type="button"
-                  class="asso relative overflow-hidden border border-gray-400 hover:border-gray-200 w-full h-full rounded font-semibold hover:text-white">
-            Adhérer
+                  class="asso relative overflow-hidden border border-gray-400 hover:border-gray-200 w-full h-full rounded sm:font-semibold hover:text-white">
+            Adhérer<span class="hidden sm:inline"> - Soutenir</span>
           </button>
         </div>
 
         <div class="hidden md:block pl-5">
-          <button class="bg-transparent hover:bg-gray-800 text-gray-400 font-semibold hover:text-gray-200 h-full px-4 border border-gray-500 hover:border-gray-400 rounded">
-            Login
-          </button>
+          <nuxt-link to="/login">
+            <button
+              class="bg-transparent hover:bg-gray-800 text-gray-400 font-semibold hover:text-gray-200 h-full px-4 border border-gray-500 hover:border-gray-400 rounded">
+              Login
+            </button>
+          </nuxt-link>
         </div>
 
       </div>

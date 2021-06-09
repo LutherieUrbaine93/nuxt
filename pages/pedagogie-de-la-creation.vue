@@ -10,36 +10,35 @@
       <h4 class="text-center mx-auto">{{ pageData.Titre_gal1 }}</h4>
 
       <ul class="flex flex-col items-center">
-        <li v-for="image in pageData.atelier_const_imgs" class="list-none my-5">
+        <li v-for="image in pageGlr1" class="list-none my-5">
           <img :src="image.url" :alt="image"/>
         </li>
       </ul>
 
-<!--      <image-gallery/>-->
+      <!--
+            <client-only>
+              <lightGallery
+                :images="images"
+                :index="index"
+                :disable-scroll="true"
+                @close="index = null"
+              />
 
-<!--
-      <image-gallery :imgs="[
-          {
-            src: 'https://res.cloudinary.com/lutherie-urbaine-93/image/upload/v1622813991/atel_const_02_6b30124a58.jpg',
-            thumbnail: 'https://res.cloudinary.com/lutherie-urbaine-93/image/upload/v1622813991/thumbnail_atel_const_02_6b30124a58.jpg',
-            w: 200, h: 300,
-            alt: 'atel_const_02',
-            title: 'Atelier construction'
-          },
-          {
-            src: 'https://picsum.photos/200/300',
-            thumbnail: 'https://picsum.photos/200/300',
-            w: 200, h: 300,
-            alt: 'random picture from picsum.photos to demonstrate the vue-picture-swipe component',
-            title: 'Some Picture'
-          }
-          ]"/>
--->
+              <div v-for="(thumb, thumbIndex) in thumbs"
+                   :key="thumbIndex"
+                   @click="index = thumbIndex"
+                   class="inline-block cursor-pointer overflow-hidden rounded w-28 h-28 m-3 border-2 border-gray-400 hover:border-gray-200"
+              >
+                <img :src="thumb" alt="" class="w-full h-full object-cover"/>
+              </div>
+            </client-only>
+      -->
+
 
       <h4 class="text-center mx-auto my-5">{{ pageData.Titre_gal2 }}</h4>
 
       <ul class="flex flex-col items-center">
-        <li v-for="image in pageData.atelier_music_imgs" class="list-none my-5">
+        <li v-for="image in pageGlr2" class="list-none my-5">
           <img :src="image.url" :alt="image"/>
         </li>
       </ul>
@@ -57,15 +56,37 @@ export default {
     // Fetch page data:
     const pageData = await $strapi.find(route.name)
     const pageMenu = pageData.menu
+    const pageGlr1 = pageData.atelier_const_imgs
+    const pageGlr2 = pageData.atelier_music_imgs
 
     return {
       pageMenu,
-      pageData
+      pageData,
+      pageGlr1,
+      pageGlr2
     }
   },
   data() {
     return {
-      route: this.$route.name
+      route: this.$route.name,
+      index: null,
+      images: [
+        'https://res.cloudinary.com/lutherie-urbaine-93/image/upload/v1622813991/atel_const_02_6b30124a58.jpg',
+        'https://res.cloudinary.com/lutherie-urbaine-93/image/upload/v1622813990/atel_const_01_caf1cbfd31.jpg'
+      ],
+      thumbs: [
+        'https://res.cloudinary.com/lutherie-urbaine-93/image/upload/v1622813991/thumbnail_atel_const_02_6b30124a58.jpg',
+        'https://res.cloudinary.com/lutherie-urbaine-93/image/upload/v1622813990/thumbnail_atel_const_01_caf1cbfd31.jpg'
+      ]
+    }
+  },
+  computed: {
+    imgGlrA() {
+      return this.pageGlr1.forEach(e => e.url)
+    },
+    thumbName() {
+      return this.images.forEach(e => {
+      })
     }
   },
   head() {
@@ -79,7 +100,7 @@ export default {
         }
       ]
     }
-  }
+  },
 }
 </script>
 
