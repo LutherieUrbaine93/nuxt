@@ -40,7 +40,7 @@ export default {
   components: {LogoC},
   methods: {
     goToAsso() {
-      window.location.href = 'https://www.helloasso.com/associations/lutherie-urbaine-93/adhesions/bulletin-d-adhesion-2021-lutherie-urbaine-9-3'
+      window.open('https://www.helloasso.com/associations/lutherie-urbaine-93/adhesions/bulletin-d-adhesion-2021-lutherie-urbaine-9-3', '_blank')
     }
   }
 }

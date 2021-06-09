@@ -8,7 +8,7 @@
       <div>
         <input
           v-model="identifier"
-          class="p-3 my-5 border w-full"
+          class="p-3 my-5 border w-full text-gray-800"
           type="email"
           placeholder="email"
         />
@@ -16,7 +16,7 @@
       <div>
         <input
           v-model="password"
-          class="p-3 my-5 border w-full"
+          class="p-3 my-5 border w-full text-gray-800"
           type="password"
           placeholder="password"
         />
