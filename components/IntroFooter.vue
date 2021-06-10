@@ -57,7 +57,7 @@ export default {
       showModal: false
     }
   },
-  inheritAttrs: false
+  // inheritAttrs: false
 }
 </script>
 
