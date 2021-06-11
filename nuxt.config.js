@@ -7,9 +7,9 @@ export default {
 
   // add the URL of lu93 API
   publicRuntimeConfig: {
-    axios: {
-      baseURL: 'https://lutherieurbaine93.herokuapp.com/'
-    }
+    baseURL: process.env.BASE_URL || 'https://lutherieurbaine93.github.io/nuxt/'
+  },
+  privateRuntimeConfig: {
   },
 
   // Avoid Trailing slash problems at the end of urls, by NOT generating html pages in folders

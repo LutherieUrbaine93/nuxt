@@ -12,7 +12,7 @@
 
       <p class="text-center mx-auto py-14">{{ pageData.Historique }}</p>
 
-      <div class="flex items-stretch">
+      <div class="flex flex-wrap items-stretch">
         <nuxt-link to="/pedagogie-de-la-creation" class="link p-1.5 lg:w-1/3">
           <div class="box shadow-md">
             <div class="text-center rounded-t p-4" :style="{ backgroundColor: pedaMenu.Couleur }">
@@ -56,8 +56,8 @@
 
       <!-- Les cofondateurs & amis -->
       <h2 class="text-center mx-auto">{{ pageData.Sous_titre1 }}</h2>
-      <div class="flex mt-5">
-        <div v-for="collab in collaborateurs" :key="collab.Ordre" class="p-1">
+      <div class="flex flex-wrap sm:flex-nowrap mt-5">
+        <div v-for="collab in collaborateurs" :key="collab.Ordre" class="p-1 w-1/2 sm:w-1/8">
           <img :src="collab.Photo.url" :alt="collab.Prenom" class="rounded-full"/>
           <h5 class="text-center mt-2">{{ collab.Prenom }}</h5>
         </div>
