@@ -41,12 +41,6 @@
         </client-only>
       </div>
 
-      <!--      <ul class="flex flex-col items-center">
-              <li v-for="image in imgsMusic" class="list-none my-5">
-                <img :src="image.url" :alt="image"/>
-              </li>
-            </ul>-->
-
     </div>
 
     <PageFooter :page-color="pageMenu.Couleur"/>

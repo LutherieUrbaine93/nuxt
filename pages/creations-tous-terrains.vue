@@ -11,14 +11,15 @@
 
       <h3 class="text-center mx-auto py-14">{{ pageData.Periode }}</h3>
 
-      <div class="wrapper-row items-stretch">
+      <div class="flex flex-wrap items-stretch">
 
-        <div v-for="creation in creations" class="p-1.5 lg:w-1/3">
+        <div v-for="creation in creations" class="py-3 sm:py-5">
 
           <a v-if="creation.Lien && creation.Lien.startsWith('http')" :href="creation.Lien">
-            <div class="rounded-t p-4 border-2" :style="{ borderColor: pageMenu.Couleur }">
-              <h4 class="text-center">{{ creation.Titre }}</h4>
-              <p class="whitespace-pre-line mt-5">{{ creation.Texte }}</p>
+            <div class="inline-block rounded-t py-2 px-4" :style="{ backgroundColor: pageMenu.Couleur }">
+              <h4>{{ creation.Titre }}</h4>
+            </div>
+            <div class="p-4 border-2 whitespace-pre-line" :style="{ borderColor: pageMenu.Couleur }" v-html="$md.render(creation.Texte)">
             </div>
             <div class="rounded-b p-1 border-2"
                  :style="{ borderColor: pageMenu.Couleur, backgroundColor: pageMenu.Couleur }">
@@ -28,9 +29,10 @@
           </a>
 
           <nuxt-link v-else-if="creation.Lien" :to="creation.Lien">
-            <div class="rounded-t p-4 border-2" :style="{ borderColor: pageMenu.Couleur }">
-              <h4 class="text-center">{{ creation.Titre }}</h4>
-              <p class="whitespace-pre-line mt-5">{{ creation.Texte }}</p>
+            <div class="inline-block rounded-t py-2 px-4" :style="{ backgroundColor: pageMenu.Couleur }">
+              <h4>{{ creation.Titre }}</h4>
+            </div>
+            <div class="p-4 border-2 whitespace-pre-line" :style="{ borderColor: pageMenu.Couleur }" v-html="$md.render(creation.Texte)">
             </div>
             <div class="rounded-b p-1 border-2"
                  :style="{ borderColor: pageMenu.Couleur, backgroundColor: pageMenu.Couleur }">
@@ -39,9 +41,12 @@
             </div>
           </nuxt-link>
 
-          <div v-else class="rounded p-4 border-2" :style="{ borderColor: pageMenu.Couleur }">
-            <h4 class="text-center">{{ creation.Titre }}</h4>
-            <p class="whitespace-pre-line mt-5">{{ creation.Texte }}</p>
+          <div v-else>
+            <div class="inline-block rounded-t py-2 px-4" :style="{ backgroundColor: pageMenu.Couleur }">
+              <h4>{{ creation.Titre }}</h4>
+            </div>
+            <div class="rounded-b p-4 border-2 whitespace-pre-line" :style="{ borderColor: pageMenu.Couleur }" v-html="$md.render(creation.Texte)">
+            </div>
           </div>
 
         </div>
