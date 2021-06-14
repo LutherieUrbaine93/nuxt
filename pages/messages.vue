@@ -18,7 +18,6 @@
           <h5 v-if="msg.phone">Tél : {{ msg.phone }}</h5>
           <p>{{ msg.message }}</p>
         </div>
-        <!--    <pre>{{messages}}</pre>-->
       </div>
 
     </div>

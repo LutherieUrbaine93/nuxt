@@ -16,7 +16,6 @@
           </li>
 
           <li class="float-left text-gray-400 hover:text-gray-200 cursor-pointer">
-
             <vue-final-modal v-model="showModal" classes="modal-container" content-class="modal-content">
               <button class="modal__close" @click="showModal = false">
                 <ClosIcon class="text-gray-100 fill-current h-16"/>
@@ -26,13 +25,14 @@
               </span>
             </vue-final-modal>
             <button @click="showModal = true">
-              <MailIcon class="text-gray-400 fill-current h-6 float-left mx-1"/>Contact
+              <MailIcon class="text-gray-400 fill-current h-6 float-left mx-1"/>
+              Contact
             </button>
-
           </li>
 
         </ul>
       </div>
+
       <p class="text-center text-gray-400 py-4">{{ copyrights }}</p>
 
     </div>
@@ -71,6 +71,7 @@ footer {
   justify-content: center;
   align-items: center;
 }
+
 ::v-deep .modal-content {
   display: flex;
   flex-direction: column;

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="m-5">
     <h2 class="text-center mx-auto pb-10">Envoyez-nous un message :</h2>
 
     <!-- This shows a success message if the form was submitted correctly. -->
@@ -75,7 +75,7 @@
         <span class="inline-flex rounded-md shadow-sm">
           <button type="submit"
                   class="inline-flex justify-center py-3 px-6 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-carnelian hover:bg-carnelian-light focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-carnelian-dark transition duration-200 ease-in-out">
-            {{ loading ? "Message envoyé..." : "Envoyer" }}
+            {{ loading ? "Envoi en cours..." : "Envoyer" }}
           </button>
         </span>
       </div>

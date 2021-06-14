@@ -134,11 +134,10 @@ button.asso:hover:after {
 ::v-deep .modal-content {
   display: flex;
   flex-direction: column;
-  margin: 0 1rem;
   padding: .5rem;
   border: 1px solid #e2e8f0;
   border-radius: 0.25rem;
-  @apply bg-gray-800
+  @apply bg-gray-800 w-64
 }
 
 .modal__close {
