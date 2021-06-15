@@ -97,6 +97,7 @@ components/MenuNavVuex.vue
 components/PageHeaderNew.vue
 components/SvgIcons.vue
 
+pages/_.vue
 pages/signup.vue
 static/js/AnimatedCircles.js
 store
