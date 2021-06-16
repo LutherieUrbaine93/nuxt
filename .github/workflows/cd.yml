@@ -33,6 +33,6 @@ jobs:
         with:
           source-directory: './dist'
           destination-github-username: 'LutherieUrbaine93'
-          destination-repository-name: 'LutherieUrbaine93'
+          destination-repository-name: 'dist'
           user-email: adrientasic7@gmail.com
           target-branch: main
