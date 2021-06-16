@@ -101,3 +101,5 @@ pages/_.vue
 pages/signup.vue
 static/js/AnimatedCircles.js
 store
+
+.github/workflows/cd_bak.yml

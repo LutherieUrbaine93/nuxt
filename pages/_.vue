@@ -1,10 +1,14 @@
 <template>
-$END$
+
 </template>
 
 <script>
 export default {
-name: "_"
+  middleware: [
+    function({ redirect }) {
+      return redirect(301, '/el?e=rnf')
+    }
+  ],
 }
 </script>
 

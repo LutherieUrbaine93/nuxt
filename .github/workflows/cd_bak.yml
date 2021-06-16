@@ -26,13 +26,8 @@ jobs:
       - name: Generate
         run: npm run generate
 
-      - name: Pushes to another repository
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          source-directory: './dist'
-          destination-github-username: 'LutherieUrbaine93'
-          destination-repository-name: 'LutherieUrbaine93'
-          user-email: adrientasic7@gmail.com
-          target-branch: main
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist

@@ -51,7 +51,6 @@ export default {
           identifier: this.identifier,
           password: this.password,
         })
-        console.log(user)
         if (user !== null) {
           this.error = ''
           this.$nuxt.$router.push('/messages')
