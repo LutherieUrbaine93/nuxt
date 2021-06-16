@@ -1,9 +1,9 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
-/*  router: {
-    base: '/LutherieUrbaine93/'
-  },*/
+  router: {
+    base: '/lutherieurbaine93/'
+  },
 
   // add the URL of lu93 API
   publicRuntimeConfig: {
