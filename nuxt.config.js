@@ -7,7 +7,7 @@ export default {
 
   // add the URL of lu93 API
   publicRuntimeConfig: {
-    baseURL: process.env.BASE_URL || 'https://lutherieurbaine93.github.io/nuxt/'
+    baseURL: process.env.BASE_URL || 'https://lutherieurbaine93.github.io/'
   },
   privateRuntimeConfig: {
   },
