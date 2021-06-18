@@ -9,18 +9,7 @@
 
       <h4 class="text-center mx-auto mb-5">{{ pageData.Titre_gal1 }}</h4>
 
-      <div class="flex flex-wrap justify-center">
-        <client-only>
-          <lightGallery :images="gallery1" :index="index" :disable-scroll="true" @close="index = null"/>
-          <div v-for="(thumb, thumbIndex) in thumbs1"
-               :key="thumb"
-               @click="index = thumbIndex"
-               class="inline-block cursor-pointer overflow-hidden rounded w-28 h-28 m-3 border-2 border-gray-400 hover:border-gray-200"
-          >
-            <img :src="thumb" alt="" class="w-full h-full object-cover"/>
-          </div>
-        </client-only>
-      </div>
+      <image-gallery :gallery="imgsConst"/>
 
       <div class="wrapper-row">
         <div class="w-1/3 sm:w-1/6 h-0.5 my-14" :style="{ backgroundColor: pageMenu.Couleur }"></div>
@@ -28,18 +17,7 @@
 
       <h4 class="text-center mx-auto mb-5">{{ pageData.Titre_gal2 }}</h4>
 
-      <div class="flex flex-wrap justify-center">
-        <client-only>
-          <lightGallery :images="gallery2" :index="index" :disable-scroll="true" @close="index = null"/>
-          <div v-for="(thumb, thumbIndex) in thumbs2"
-               :key="thumb"
-               @click="index = thumbIndex"
-               class="inline-block cursor-pointer overflow-hidden rounded w-28 h-28 m-3 border-2 border-gray-400 hover:border-gray-200"
-          >
-            <img :src="thumb" alt="" class="w-full h-full object-cover"/>
-          </div>
-        </client-only>
-      </div>
+      <image-gallery :gallery="imgsMusic"/>
 
     </div>
 
@@ -69,15 +47,7 @@ export default {
       route: this.$route.name,
       index: null,
       imgsConst: [],
-      imgsMusic: [],
-      images: [
-        'https://res.cloudinary.com/lutherie-urbaine-93/image/upload/v1622813991/atel_const_02_6b30124a58.jpg',
-        'https://res.cloudinary.com/lutherie-urbaine-93/image/upload/v1622813990/atel_const_01_caf1cbfd31.jpg'
-      ],
-      thumbs: [
-        'https://res.cloudinary.com/lutherie-urbaine-93/image/upload/v1622813991/thumbnail_atel_const_02_6b30124a58.jpg',
-        'https://res.cloudinary.com/lutherie-urbaine-93/image/upload/v1622813990/thumbnail_atel_const_01_caf1cbfd31.jpg'
-      ]
+      imgsMusic: []
     }
   },
   computed: {
