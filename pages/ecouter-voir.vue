@@ -8,23 +8,30 @@
     <div class="container items-center flex-grow flex-shrink mx-auto py-10">
 
       <!-- Video rencentes -->
-      <p class="text-center text-2xl text-gray-300 underline py-10">{{ pageData.titre1 }}</p>
+<!--      <p class="text-center text-2xl text-gray-300 underline py-10">{{ pageData.titre1 }}</p>-->
 
-      <div v-for="vid in videos" v-if="!vid.archive" class="w-full">
-        <h3 class="text-center">{{ vid.Titre }}</h3>
-        <p class="text-center text-gray-300">{{ vid.Sous_titre }}</p>
-        <VideoPlayer v-if="vid.video" :src="vid.video.url"/>
-        <VideoPlayer v-else :src="vid.Lien" allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" />
+      <div v-for="video in videos" v-if="!video.archive" class="w-full pb-8">
+        <h3 class="text-center py-5">{{ video.Titre }}</h3>
+        <p class="text-center text-gray-300 mt-1 mb-3">{{ video.Sous_titre }}</p>
+
+        <vue-video-player v-if="video.fichier_video" :video-data="video" />
+
+<!--        <VideoPlayer v-if="video.fichier_video" :src="video.fichier_video.url"/>-->
+        <VideoPlayer v-else :src="video.Lien" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" />
+
       </div>
 
       <!-- Video archives -->
       <p class="text-center text-2xl text-gray-300 underline py-10">{{ pageData.titre2 }}</p>
 
-      <div v-for="vid in videos" v-if="vid.archive" class="w-full">
-        <h3 class="text-center">{{ vid.Titre }}</h3>
-        <p class="text-center text-gray-300">{{ vid.Sous_titre }}</p>
-        <VideoPlayer v-if="vid.video" :src="vid.video.url"/>
-        <VideoPlayer v-else :src="vid.Lien" allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" />
+      <div v-for="video in videos" v-if="video.archive" class="w-full pb-8">
+        <h3 class="text-center">{{ video.Titre }}</h3>
+        <p class="text-center text-gray-300 mt-1 mb-3">{{ video.Sous_titre }}</p>
+
+        <vue-video-player v-if="video.fichier_video" :video-data="video" />
+
+        <VideoPlayer v-else :src="video.Lien" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" />
+
       </div>
 
     </div>

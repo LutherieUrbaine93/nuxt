@@ -19,7 +19,7 @@
 export default {
   props: {
     menus: Array,
-    default: () => []
+    default: []
   }
 }
 </script>

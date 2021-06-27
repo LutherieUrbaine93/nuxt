@@ -1,9 +1,7 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
-/*  router: {
-    base: '/nuxt/'
-  },*/
+  // router: {},
 
   // add the URL of lu93 API
   publicRuntimeConfig: {
@@ -38,12 +36,16 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['@/assets/css/main.css'],
+  css: [
+    '@/assets/css/main.css',
+    'video.js/dist/video-js.css'
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~plugins/vue-final-modal.js',
     '~plugins/lightGallery.client.js',
+    { src: '~plugins/vue-video-player.js', ssr: false }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

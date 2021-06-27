@@ -5,8 +5,10 @@
 
     <PageHeader :page-title="pageData.Entete" :page-color="pageMenu.Couleur" :text-dark="pageMenu.Texte_foncer"/>
 
-    <div class="container-lt flex-grow flex-shrink mx-auto py-10">
+    <div class="container-lt flex-grow flex-shrink mx-auto py-10 justify-center">
       <h4 class="md:w-2/3 text-center mx-auto">{{ pageData.Introduction }}</h4>
+
+      <img :src="pageData.intro_gif.url" alt="instrumentarium" class="block mx-auto my-10"/>
     </div>
 
     <PageFooter :page-color="pageMenu.Couleur"/>
