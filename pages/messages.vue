@@ -5,19 +5,19 @@
     <MenuNav/>
 
     <header class="flex-grow-0 flex-shrink bg-gray-800 py-3">
-      <h2 class="page-title text-center my-0">Messages envoyés :</h2>
+      <h2 class="page-title text-center my-0">Messages reçus :</h2>
     </header>
 
     <div class="container-lt flex-grow flex-shrink mx-auto py-10">
 
-      <div>
-        <div v-for="msg in messages" class="mb-5">
-          <p>Envoyé le : {{ msg.createdAt }}</p>
-          <h5>Message de : {{ msg.name }}</h5>
-          <h5>Email : {{ msg.email }}</h5>
-          <h5 v-if="msg.phone">Tél : {{ msg.phone }}</h5>
-          <p>{{ msg.message }}</p>
-        </div>
+      <div v-for="(msg, index) in messages" class="mb-8">
+        <p class="bg-gray-200 text-gray-900 inline-block px-1.5 mb-1">
+          Reçu le <span class="font-bold">{{ convertDate[index] }}</span> à <span class="font-bold">{{ convertHour[index] }}</span>
+        </p>
+        <h5>Message de : {{ msg.name }}</h5>
+        <h5>Email : {{ msg.email }}</h5>
+        <h5 v-if="msg.phone">Tél : {{ msg.phone }}</h5>
+        <p>{{ msg.message }}</p>
       </div>
 
     </div>
@@ -40,6 +40,22 @@ export default {
       messages
     }
   },
+  computed: {
+    convertDate: function () {
+      return this.messages.map((msg) => {
+        const rawDate = msg.createdAt
+        const dayDate = rawDate.substr(0, rawDate.indexOf('T'))
+        const sptDate = dayDate.split("-")
+        return `${sptDate[2]}/${sptDate[1]}/${sptDate[0]}`
+      })
+    },
+    convertHour: function () {
+      return this.messages.map((msg) => {
+        const rawDate = msg.createdAt
+        return rawDate.substr(rawDate.indexOf('T') + 1, 5)
+      })
+    }
+  }
 }
 </script>
 

@@ -53,7 +53,7 @@ export default {
         })
         if (user !== null) {
           this.error = ''
-          this.$nuxt.$router.push('/messages')
+          this.$nuxt.$router.push('/users')
         }
       } catch (error) {
         this.error = 'Error in login credentials'

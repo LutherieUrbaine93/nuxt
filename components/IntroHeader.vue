@@ -5,27 +5,35 @@
 
       <div class="flex flex-row w-full sm:w-11/12 xl:w-4/5 2xl:w-4/6 py-5">
 
-        <div class="flex flex-grow items-center">
-          <LogoC class="fill-current float-left h-12 mr-2"/>
-          <h3 class="text-gray-300">Lutherie Urbaine 9.3</h3>
-        </div>
-
         <!-- If User is logged -->
         <div v-if="$strapi.user !== null" class="flex flex-grow">
-          <div class="flex-grow h-full">
-            <p class="text-center">Bienvenue</p>
-            <p class="text-center font-bold">{{ $strapi.user.username }}</p>
 
+          <div class="flex flex-grow items-center h-12">
+            <h3 class="text-gray-300">Connecté : {{ $strapi.user.username }}</h3>
           </div>
 
+          <nuxt-link to="/users">
+            <button
+              class="bg-transparent hover:bg-gray-800 font-semibold text-gray-400 hover:text-gray-200 h-full px-4 border border-gray-500 hover:border-gray-400 rounded mr-4 block m-auto">
+              Menus
+            </button>
+          </nuxt-link>
+
           <button @click="logout"
-                  class="bg-transparent hover:bg-gray-800 text-gray-400 font-semibold hover:text-gray-200 h-full px-4 border border-gray-500 hover:border-gray-400 rounded">
+                  class="bg-transparent hover:bg-gray-800 font-semibold text-gray-300 hover:text-gray-200 h-full px-4 border border-gray-300 bg-red-700 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-gray-300 rounded">
             Logout
           </button>
+
         </div>
 
         <!-- If User ISN'T logged -->
         <div v-else class="flex flex-grow">
+
+          <div class="flex flex-grow items-center">
+            <LogoC class="fill-current float-left h-12 mr-2"/>
+            <h3 class="text-gray-300">Lutherie Urbaine 9.3</h3>
+          </div>
+
           <div class="flex-grow">
             <button @click="goToAsso"
                     type="button"
