@@ -11,7 +11,7 @@
 <!--      <p class="text-center text-2xl text-gray-300 underline py-10">{{ pageData.titre1 }}</p>-->
 
       <div v-for="video in videos" v-if="!video.archive" class="w-full pb-8">
-        <h3 class="text-center py-5">{{ video.Titre }}</h3>
+        <h3 class="text-center">{{ video.Titre }}</h3>
         <p class="text-center text-gray-300 mt-1 mb-3">{{ video.Sous_titre }}</p>
 
         <vue-video-player v-if="video.fichier_video" :video-data="video" />

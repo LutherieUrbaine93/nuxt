@@ -15,38 +15,25 @@
 
         <div v-for="creation in creations" class="py-3 sm:py-5">
 
-          <a v-if="creation.Lien && creation.Lien.startsWith('http')" :href="creation.Lien">
+          <div>
             <div class="inline-block rounded-t py-2 px-4" :style="{ backgroundColor: pageMenu.Couleur }">
               <h4>{{ creation.Titre }}</h4>
             </div>
-            <div class="p-4 border-2 whitespace-pre-line" :style="{ borderColor: pageMenu.Couleur }" v-html="$md.render(creation.Texte)">
-            </div>
-            <div class="rounded-b p-1 border-2"
-                 :style="{ borderColor: pageMenu.Couleur, backgroundColor: pageMenu.Couleur }">
-              <p v-if="pageData.Texte_foncer" class="text-center text-gray-800 opacity-80">{{ pageData.Cliquable }}</p>
-              <p v-else class="text-center opacity-80">{{ pageData.Cliquable }}</p>
-            </div>
-          </a>
+            <div class="rounded-b border-2 p-4 whitespace-pre-line" :style="{ borderColor: pageMenu.Couleur }">
+              <div v-html="$md.render(creation.Texte)" />
+              <div>
+                <a v-if="creation.Lien && creation.Lien.startsWith('http')"
+                   :href="creation.Lien" target="_blank"
+                   class="border border-gray-500 hover:border-gray-300 text-white py-2 px-4 rounded-full"
+                   :style="{ backgroundColor: pageMenu.Couleur }">{{ pageData.Cliquable }}</a>
+                <nuxt-link v-else-if="creation.Lien"
+                           :to="creation.Lien"
+                           class="border border-gray-500 hover:border-gray-300 text-white py-2 px-4 rounded-full"
+                           :style="{ backgroundColor: pageMenu.Couleur }">{{ pageData.Cliquable }}</nuxt-link>
+              </div>
 
-          <nuxt-link v-else-if="creation.Lien" :to="creation.Lien">
-            <div class="inline-block rounded-t py-2 px-4" :style="{ backgroundColor: pageMenu.Couleur }">
-              <h4>{{ creation.Titre }}</h4>
             </div>
-            <div class="p-4 border-2 whitespace-pre-line" :style="{ borderColor: pageMenu.Couleur }" v-html="$md.render(creation.Texte)">
-            </div>
-            <div class="rounded-b p-1 border-2"
-                 :style="{ borderColor: pageMenu.Couleur, backgroundColor: pageMenu.Couleur }">
-              <p v-if="pageData.Texte_foncer" class="text-center text-gray-800 opacity-80">{{ pageData.Cliquable }}</p>
-              <p v-else class="text-center opacity-80">{{ pageData.Cliquable }}</p>
-            </div>
-          </nuxt-link>
 
-          <div v-else>
-            <div class="inline-block rounded-t py-2 px-4" :style="{ backgroundColor: pageMenu.Couleur }">
-              <h4>{{ creation.Titre }}</h4>
-            </div>
-            <div class="rounded-b p-4 border-2 whitespace-pre-line" :style="{ borderColor: pageMenu.Couleur }" v-html="$md.render(creation.Texte)">
-            </div>
           </div>
 
         </div>
