@@ -106,7 +106,8 @@ export default {
           name: this.name,
           email: this.email,
           phone: this.phone,
-          message: this.message
+          message: this.message,
+          viewed: false
         })
         console.log(newMessage)
         if (newMessage !== null) {
