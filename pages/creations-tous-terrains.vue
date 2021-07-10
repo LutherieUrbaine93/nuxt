@@ -20,7 +20,7 @@
               <h4>{{ creation.Titre }}</h4>
             </div>
             <div class="rounded-b border-2 p-4 whitespace-pre-line" :style="{ borderColor: pageMenu.Couleur }">
-              <div v-html="$md.render(creation.Texte)" />
+              <div v-html="$md.render(creation.Texte)"/>
               <div>
                 <a v-if="creation.Lien && creation.Lien.startsWith('http')"
                    :href="creation.Lien" target="_blank"
@@ -29,7 +29,8 @@
                 <nuxt-link v-else-if="creation.Lien"
                            :to="creation.Lien"
                            class="border border-gray-500 hover:border-gray-300 text-white py-2 px-4 rounded-full"
-                           :style="{ backgroundColor: pageMenu.Couleur }">{{ pageData.Cliquable }}</nuxt-link>
+                           :style="{ backgroundColor: pageMenu.Couleur }">{{ pageData.Cliquable }}
+                </nuxt-link>
               </div>
 
             </div>
