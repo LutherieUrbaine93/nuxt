@@ -44,7 +44,6 @@
 
       </div>
 
-
       <div class="flex flex-wrap justify-evenly items-stretch sm:pt-6">
 
         <div class="relative p-1.5 sm:w-1/3 mt-10">
