@@ -13,6 +13,7 @@
           </div>
 
           <nuxt-link to="/users">
+
             <button
               class="bg-transparent hover:bg-gray-800 font-semibold text-gray-400 hover:text-gray-200 h-full px-4 border border-gray-500 hover:border-gray-400 rounded mr-4 block m-auto">
               Menus
