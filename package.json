@@ -17,7 +17,7 @@
     "nuxt": "^2.15.6",
     "nuxt-mail": "^3.0.4",
     "nuxt-video-player": "^1.0.17",
-    "vue": "^2.6.12",
+    "vue": "^2.7.1",
     "vue-final-modal": "^2.3.1",
     "vue-light-gallery": "^1.0.1",
     "vue-video-player": "^5.0.2",
